@@ -24,6 +24,7 @@ gem 'jquery-rails'
 
 group :development do
   gem 'shotgun'
+  gem 'pry-debugger'
 end
 
 gem 'youtube_search'
