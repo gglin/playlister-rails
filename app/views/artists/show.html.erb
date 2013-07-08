@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h3><a href="/artists">Artists</a></h3>
+<h3><%= link_to 'Artists', artists_path %></h3>
 <div class="hoverable">
   <h2><strong><%= @artist.name %></strong>
   <span class="admin reset-font">

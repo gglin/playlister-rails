@@ -1,12 +1,19 @@
 <p id="notice"><%= notice %></p>
 
 
-<h3><a href="/songs">Songs</a></h3>
-<h2><%= @song.print(nil, true, nil, false) %></h2>
+<h3><%= link_to "Songs", songs_path %></h3>
+<div class="hoverable">
+  <h2><strong><%= @song.print(nil, true, nil, false) %></strong>
+  <span class="admin reset-font">
+    | <%= link_to 'Edit', edit_song_path(@song) %>
+    | <%= link_to 'Back', songs_path %>
+  </span>
+  </h2>
+</div>
 
 <ul>
-Artist: <a href="/artists/<%= @song.artist.to_param %>"><%= @song.artist.name %></a><br>
-Genre:  <a href="/genres/<%= @song.genre.to_param %>"><%= @song.genre.name %></a>
+Artist: <%= link_to @song.artist.name, artist_path(@song.artist) %><br>
+Genre:  <%= link_to @song.genre.name,  genre_path(@song.genre)   %>
 </ul>
 
 <br>

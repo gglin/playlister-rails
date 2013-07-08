@@ -11,3 +11,29 @@
  *= require_self
  *= require_tree .
  */
+
+
+pre {
+    background: #fff;
+    font-size: 14px;
+}
+
+th, td {
+    padding: 3px;
+}
+
+.hoverable .admin {
+    display: none;
+}
+
+.hoverable:hover .admin {
+    display: inline;
+}
+
+.admin td {
+    text-align: center;
+}
+
+.reset-font {
+    font-size: 14px;
+}
