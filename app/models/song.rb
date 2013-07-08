@@ -2,7 +2,9 @@ class Song < ActiveRecord::Base
   belongs_to :artist
   belongs_to :genre
   attr_accessible :name
-  attr_protected :artist_id, :genre_id
+  attr_accessible :artist_id, :genre_id
+
+  validates :name, :artist_id, :genre_id, :presence => true 
 
   extend  Sluggable::ClassMethods
   include Sluggable::InstanceMethods

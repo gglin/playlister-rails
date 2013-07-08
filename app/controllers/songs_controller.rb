@@ -27,6 +27,11 @@ class SongsController < ApplicationController
   def new
     @song = Song.new
 
+    resource_type = request.referer.split("/")[-2]
+    resource_id   = request.referer.split("/")[-1]
+    @selected_artist = resource_id.to_i  if resource_type = "artists"    
+    @selected_genre  = resource_id.to_i  if resource_type = "genres"
+
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @song }
@@ -36,6 +41,9 @@ class SongsController < ApplicationController
   # GET /songs/1/edit
   def edit
     @song = Song.find(params[:id])
+
+    @selected_artist = @song.artist_id    
+    @selected_genre  = @song.genre_id
   end
 
   # POST /songs
