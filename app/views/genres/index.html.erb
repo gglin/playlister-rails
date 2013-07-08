@@ -1,4 +1,4 @@
-<h1>Listing genres</h1>
+<!-- <h1>Listing genres</h1>
 
 <table>
   <tr>
@@ -8,16 +8,36 @@
     <th></th>
   </tr>
 
-<% @genres.each do |genre| %>
+<%# @genres.each do |genre| %>
   <tr>
-    <td><%= genre.name %></td>
-    <td><%= link_to 'Show', genre %></td>
-    <td><%= link_to 'Edit', edit_genre_path(genre) %></td>
-    <td><%= link_to 'Destroy', genre, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%# genre.name %></td>
+    <td><%# link_to 'Show', genre %></td>
+    <td><%# link_to 'Edit', edit_genre_path(genre) %></td>
+    <td><%# link_to 'Destroy', genre, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
-<% end %>
+<%# end %>
 </table>
 
 <br />
 
-<%= link_to 'New Genre', new_genre_path %>
+<%# link_to 'New Genre', new_genre_path %>
+ -->
+
+
+<h3>Genres</h3>
+<h5><%= link_to 'Add New Genre', new_genre_path %></h5>
+<hr>
+
+<ol>
+  <% genrez = @genres.sort{|a1, a2| a1.name.downcase <=> a2.name.downcase} %>
+  <% max = Genre.longest_name_length(genrez) %>
+  <% genrez.each do |genre| %>
+    <li>
+      <div class="hoverable">
+        <pre><%= link_to genre.print(max), genre %><span class="admin">  | <%= link_to "Edit", edit_genre_path(genre) %> | <%= link_to 'Delete', genre, method: :delete, data: { confirm: 'Are you sure?' } %></span></pre>
+      </div>
+    </li>
+  <% end %>
+</ol>
+
+<br>

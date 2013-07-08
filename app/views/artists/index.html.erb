@@ -1,4 +1,4 @@
-<h1>Listing artists</h1>
+<!-- <h1>Listing artists</h1>
 
 <table>
   <tr>
@@ -8,16 +8,35 @@
     <th></th>
   </tr>
 
-<% @artists.each do |artist| %>
+<%# @artists.each do |artist| %>
   <tr>
-    <td><%= artist.name %></td>
-    <td><%= link_to 'Show', artist %></td>
-    <td><%= link_to 'Edit', edit_artist_path(artist) %></td>
-    <td><%= link_to 'Destroy', artist, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%# artist.name %></td>
+    <td><%# link_to 'Show', artist %></td>
+    <td><%# link_to 'Edit', edit_artist_path(artist) %></td>
+    <td><%# link_to 'Destroy', artist, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
-<% end %>
+<%# end %>
 </table>
 
 <br />
 
-<%= link_to 'New Artist', new_artist_path %>
+
+ -->
+
+<h3>Artists</h3>
+<h5><%= link_to 'Add New Artist', new_artist_path %></h5>
+<hr>
+
+<ol>
+  <% artistz = @artists.sort{|a1, a2| a1.name.downcase <=> a2.name.downcase} %>
+  <% max = Artist.longest_name_length(artistz) %>
+  <% artistz.each do |artist| %>
+    <li>
+      <div class="hoverable">
+        <pre><%= link_to artist.print(max), artist %><span class="admin">  | <%= link_to "Edit", edit_artist_path(artist) %> | <%= link_to 'Delete', artist, method: :delete, data: { confirm: 'Are you sure?' } %></span></pre>
+      </div>
+    </li>
+  <% end %>
+</ol>
+
+<br>

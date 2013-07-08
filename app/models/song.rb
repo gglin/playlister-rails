@@ -4,6 +4,12 @@ class Song < ActiveRecord::Base
   attr_accessible :name
   attr_protected :artist_id, :genre_id
 
+  extend  Sluggable::ClassMethods
+  include Sluggable::InstanceMethods
+
+  extend  Prettifiable::ClassMethods
+  include Prettifiable::InstanceMethods
+
   def print(width = nil, include_artist = false, artist_width = nil, include_genre = true)
     artist_word = include_artist ? "#{spacer(self.artist.name,artist_width)} - " : ""
     genre_word  = include_genre  ? "[#{self.genre.name}]" : ""
@@ -18,7 +24,7 @@ class Song < ActiveRecord::Base
 
   def youtube
     id = YoutubeSearch.search("#{self.artist.name} #{self.name}").first["video_id"]
-    url = "http://www.youtube.com/watch?v=#{id}"
-    OEmbed::Providers::Youtube.get(url).html
+    # url = "http://www.youtube.com/watch?v=#{id}"
+    # ::OEmbed::Providers::Youtube.get(url).html
   end
 end

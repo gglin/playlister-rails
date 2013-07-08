@@ -41,6 +41,7 @@ class GenresController < ApplicationController
   # POST /genres.json
   def create
     @genre = Genre.new(params[:genre])
+    @genre.name.downcase!
 
     respond_to do |format|
       if @genre.save

@@ -1,10 +1,20 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Name:</b>
-  <%= @song.name %>
-</p>
 
+<h3><a href="/songs">Songs</a></h3>
+<h2><%= @song.print(nil, true, nil, false) %></h2>
+
+<ul>
+Artist: <a href="/artists/<%= @song.artist.to_param %>"><%= @song.artist.name %></a><br>
+Genre:  <a href="/genres/<%= @song.genre.to_param %>"><%= @song.genre.name %></a>
+</ul>
+
+<br>
+
+<iframe src='http://www.youtube.com/embed/<%= @video_id %>' width=640 height=480 frameborder=0></iframe>
+
+<br>
+<br>
 
 <%= link_to 'Edit', edit_song_path(@song) %> |
 <%= link_to 'Back', songs_path %>

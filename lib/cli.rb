@@ -1,9 +1,15 @@
-require './environment'
-require 'pry-debugger'
+Dir.glob('./assets/*').each do |file|
+  require file
+end
+
+Dir.glob('../app/models/*').each do |file|
+  require file
+end
+
 
 # Parse the data folder and create a new local variable which holds all the songs
-parser = LibraryParser.new
-parser.call('data')
+# parser = LibraryParser.new
+# parser.call('data')
 
 songs = Song.all
 

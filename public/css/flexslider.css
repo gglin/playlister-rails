@@ -1,0 +1,212 @@
+
+/*
+ * jQuery FlexSlider v1.8
+ * http://flex.madebymufffin.com
+ *
+ * Copyright 2011, Tyler Smith
+ * Free to use under the MIT license.
+ * http://www.opensource.org/licenses/mit-license.php
+ */
+/* Browser Resets */
+.flex-container a:active,
+.flexslider a:active {
+    outline: none
+}
+.slides,
+.flex-control-nav,
+.flex-direction-nav {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+/* FlexSlider Necessary Styles
+*********************************/
+.flexslider {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+.flexslider .slides > li {
+    display: none
+} /* Hide the slides before the JS is loaded. Avoids image jumping */
+.flexslider .slides img {
+    max-width: 100%;
+    display: block;
+    width: 100%;
+}
+.flex-pauseplay span {
+    text-transform: capitalize
+}
+/* Clearfix for the .slides element */
+.slides:after {
+    content: ".";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0;
+}
+html[xmlns] .slides {
+    display: block
+}
+* html .slides {
+    height: 1%
+}
+/* No JavaScript Fallback */
+/* If you are not using another script, such as Modernizr, make sure you
+ * include js that eliminates this class on page load */
+.no-js .slides > li:first-child {
+    display: block
+}
+/* FlexSlider Default Theme
+*********************************/
+.flexslider {
+    position: relative;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-radius: 5px;
+    zoom: 1;
+}
+.flexslider .slides {
+    zoom: 1
+}
+.flexslider .slides > li {
+    position: relative
+}
+/* Suggested container for "Slide" animation setups. Can replace this with your own, if you wish */
+.flex-container {
+    zoom: 1;
+    position: relative;
+}
+/* Caption style */
+/* IE rgba() hack */
+.flex-caption {
+    background: none;
+    -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#4C000000,endColorstr=#4C000000);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#4C000000,endColorstr=#4C000000);
+    zoom: 1;
+}
+.flex-caption {
+    width: 96%;
+    padding: 2%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background: rgba(0,0,0,.3);
+    color: #fff;
+    text-shadow: 0 -1px 0 rgba(0,0,0,.3);
+    font-size: 14px;
+    line-height: 18px;
+}
+/* Direction Nav */
+.flex-direction-nav li a {
+    display: block;
+    position: absolute;
+    cursor: pointer;
+    text-indent: -9999px;
+}
+#sidebar .flex-direction-nav li {
+	list-style-type: none;
+	margin: 0;
+}
+.flex-direction-nav li {
+	position: relative;
+}
+.flex-direction-nav li .flex-next {
+    background: #444;
+    right: 0;
+    bottom: 0;
+    width: 25px;
+    height: 25px;
+}
+.flex-direction-nav li .flex-next:before {
+	position: absolute;
+	top: 1px;
+	left: 11px;
+	display: block;
+	content: "\f0da";
+	font-family: 'FontAwesome';
+	font-size: 12px;
+	color: #aaa;
+	text-indent: 0;
+}
+.flex-direction-nav li .flex-prev {
+    right: 25px;
+    bottom: 0;
+    background: #444;
+    width: 25px;
+    height: 25px;
+    border-right: solid 1px #555;
+}
+.flex-direction-nav li .flex-prev:before {
+	position: absolute;
+	top: 1px;
+	left: 11px;
+	display: block;
+	content: "\f0d9";
+	font-family: 'FontAwesome';
+	font-size: 12px;
+	color: #aaa;
+	text-indent: 0;
+}
+.flex-direction-nav li a:hover {
+	background: #555;
+}
+.flex-direction-nav li:hover {
+	opacity: 1;
+}
+.flex-direction-nav li .disabled {
+    opacity: .3;
+    filter: alpha(opacity=30);
+    cursor: default;
+}
+/* Control Nav */
+.flex-control-nav {
+    width: 100%;
+    position: absolute;
+    bottom: -20px;
+    text-align: center;
+    display: none;
+}
+.section-testimonials .flex-control-nav {
+	display: block;
+}
+.section-testimonials .flex-direction-nav {
+	display: none;
+}
+.section-testimonials .flex-control-nav {
+	bottom: -30px;
+}
+.single-format-gallery .flex-control-nav {
+	bottom: -30px;
+}
+.flex-control-nav li {
+    margin: 0 0 0 0 !important;
+    padding: 0 5px !important;
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+    background: none !important;
+}
+.flex-control-nav li:first-child {
+    margin: 0
+}
+.flex-control-nav li a {
+    width: 10px;
+    height: 10px;
+    display: block;
+    background: #e4e4e4;
+    cursor: pointer;
+    text-indent: -9999px;
+    -webkit-border-radius: 30px; 
+    -moz-border-radius: 30px; 
+    border-radius: 30px;
+}
+.flex-control-nav li a:hover {
+    background: #a5a5a5
+}
+.flex-control-nav li .flex-active {
+    background: #a5a5a5;
+    cursor: default;
+}

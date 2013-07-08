@@ -14,6 +14,7 @@ class SongsController < ApplicationController
   # GET /songs/1.json
   def show
     @song = Song.find(params[:id])
+    @video_id = @song.youtube
 
     respond_to do |format|
       format.html # show.html.erb

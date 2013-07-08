@@ -28,7 +28,6 @@ group :development do
 end
 
 gem 'youtube_search'
-gem 'ruby-oembed'
 
 
 # To use ActiveModel has_secure_password
