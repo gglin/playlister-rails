@@ -3,7 +3,7 @@ class Song < ActiveRecord::Base
   belongs_to :genre
   belongs_to :album
   attr_accessible :name
-  attr_accessible :artist_id, :genre_id, :album_id
+  attr_protected :artist_id, :genre_id, :album_id
 
   validates :name, :artist_id, :genre_id, :presence => true 
 
