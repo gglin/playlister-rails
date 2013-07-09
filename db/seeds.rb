@@ -13,6 +13,7 @@ data_folder = File.expand_path('../data', __FILE__)
 Artist.delete_all
 Genre.delete_all
 Song.delete_all
+Album.delete_all
 
 LibraryParser.get_files(data_folder).each do |filename|
   song_info = LibraryParser.parse_mp3(filename, data_folder)
