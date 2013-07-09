@@ -1,3 +1,5 @@
+# https://gist.github.com/ashleygwilliams/5952482
+
 # Entered sequentially into rails console
 
 
