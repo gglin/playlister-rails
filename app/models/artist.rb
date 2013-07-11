@@ -13,8 +13,20 @@ class Artist < ActiveRecord::Base
   extend  Prettifiable::ClassMethods
   include Prettifiable::InstanceMethods
 
-  def print(width = nil, *args)
-    song_word = self.songs.size == 1 ? "Song" : "Songs"
-    "#{spacer(self.name,width)} - #{self.songs.size} #{spacer(song_word,6)}"
+  include ActionView::Helpers::TextHelper
+
+  def print(width = nil, include_albums = false, include_songs = false)
+    comma       = include_songs  ? ',' : ''
+    albums_word = include_albums ? spacer(pluralize(self.albums.uniq.size, 'Album')+comma, 10) : ""
+    songs_word  = include_songs  ? spacer(pluralize(self.songs.uniq.size, 'Song'))             : ""
+    "#{spacer(self.name, width)} - #{albums_word} #{songs_word}"
+  end
+
+  def primary_genre()
+    
+  end
+
+  def assign_genre_to_all_songs()
+    
   end
 end

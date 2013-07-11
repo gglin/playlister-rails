@@ -2,8 +2,7 @@ module Prettifiable
   module InstanceMethods
 
     def spacer(name, width = nil)
-      width = name.length + 1 if width.nil?
-      "#{name}                                                                                   "[0,width]
+      self.class.spacer(name, width)
     end
 
   end
@@ -16,6 +15,11 @@ module Prettifiable
         max = category.name.length if category.name.length > max
       end
       max + 1
+    end
+
+    def spacer(name, width = nil)
+      width = name.length + 1 if width.nil?
+      "#{name}                                                                                   "[0,width]
     end
 
   end

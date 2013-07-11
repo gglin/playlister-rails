@@ -1,4 +1,7 @@
-<p id="notice"><%= notice %></p>
+<% if !notice.nil? %>
+  <p id="notice" class="alert"><%= notice %></p>
+<% end %>
+
 
 <h3><%= link_to "Songs", songs_path %></h3>
 <div class="hoverable">
@@ -12,7 +15,7 @@
 
 <ul>
 Artist: <%= link_to @song.artist.name, artist_path(@song.artist) %><br>
-Album:  <%# link_to @song.album.name,  album_path(@song.album)   %><br>
+Album:  <%= link_to @album_name,  @album_link   %><br>
 Genre:  <%= link_to @song.genre.name,  genre_path(@song.genre)   %><br>
 </ul>
 

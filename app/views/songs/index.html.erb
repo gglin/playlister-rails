@@ -1,4 +1,6 @@
-<p id="notice"><%= notice %></p>
+<% if !notice.nil? %>
+  <p id="notice" class="alert"><%= notice %></p>
+<% end %>
 
 <h3>Songs</h3>
 <%= link_to 'Add New Song', new_song_path, class: "btn btn-small btn-info" %>
@@ -8,6 +10,7 @@
   <tr>
     <th></th>
     <th>Artist</th>
+    <th>Album</th>
     <th>Song</th>
     <th>Genre</th>
     <th></th>
@@ -15,11 +18,14 @@
   </tr>
   <% songz = @songs.sort_by {|i| i.name.downcase} %>
   <% songz.each_with_index do |song, index| %>
+    <% album_name = song.album.nil?  ?  ""  : song.album.name  %>
+    <% album_link = song.album.nil?  ?  "#" : album_path(song.album) %>
     <tr class="hoverable">
       <td><%= index + 1 %></td>
-      <td><%= link_to song.artist.name, artist_path(song.artist) %></td>
-      <td><%= link_to truncate(song.name, length: 40),      song %></td>
-      <td><%= link_to song.genre.name,  genre_path(song.genre)   %></td>
+      <td><%= link_to truncate(song.artist.name, length: 30), artist_path(song.artist) %></td>
+      <td><%= link_to truncate(album_name, length: 30),       album_link               %></td>
+      <td><%= link_to truncate(song.name, length: 40),        song                     %></td>
+      <td><%= link_to song.genre.name,                        genre_path(song.genre)   %></td>
       
       <td> <div class="admin"> | <%= link_to "Edit ", edit_song_path(song) %> </div></td>
       <td> <div class="admin"> | <%= link_to "Delete", song, method: :delete, data: { confirm: 'Are you sure?' } %> </div></td>

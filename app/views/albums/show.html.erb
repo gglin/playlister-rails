@@ -1,10 +1,43 @@
-<p id="notice"><%= notice %></p>
+<% if !notice.nil? %>
+  <p id="notice" class="alert"><%= notice %></p>
+<% end %>
 
-<p>
-  <b>Name:</b>
-  <%= @album.name %>
-</p>
+<h3><%= link_to 'Albums', albums_path %></h3>
+<div class="hoverable">
+  <h2><strong><%= @album.name %></strong>
+  <span class="admin reset-font">
+    | <%= link_to 'Edit', edit_album_path(@album) %>
+    | <%= link_to 'Delete', @album, method: :delete, data: { confirm: 'Are you sure?' } %>
+    | <%= link_to "Add Song", new_song_path, class: "btn btn-small btn-info" %>
+  </span>
+  </h2>
+</div>
 
+Artist: <%= link_to @album.artist.name, artist_path(@album.artist) %><br>
 
-<%= link_to 'Edit', edit_album_path(@album) %> |
-<%= link_to 'Back', albums_path %>
+</br>
+
+<table>
+<!--   <tr>
+    <th></th>
+    <th>Song</th>
+    <th>Genre</th>
+    <th></th>
+    <th></th>
+  </tr> -->
+  <% songz = @album.songs.sort_by {|i| i.track} %>
+  <% songz.each_with_index do |song, index| %>
+    <tr class="hoverable">
+      <td><%= index + 1 %></td>
+      <td><%= link_to truncate(song.name, length: 40),      song %></td>
+      <td><%= link_to " [#{song.genre.name}]",  genre_path(song.genre)   %></td>
+      
+      <td> <div class="admin"> | <%= link_to "Edit ", edit_song_path(song) %> </div></td>
+      <td> <div class="admin"> | <%= link_to "Delete", song, method: :delete, data: { confirm: 'Are you sure?' } %> </div></td>
+    </tr>
+  <% end %>
+</table>
+
+<br>
+
+<br>

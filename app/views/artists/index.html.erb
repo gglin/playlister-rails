@@ -1,4 +1,6 @@
-<p id="notice"><%= notice %></p>
+<% if !notice.nil? %>
+  <p id="notice" class="alert"><%= notice %></p>
+<% end %>
 
 <h3>Artists</h3>
 <%= link_to 'Add New Artist', new_artist_path, class: "btn btn-small btn-info" %>
@@ -10,7 +12,7 @@
   <% artistz.each do |artist| %>
     <li>
       <div class="hoverable">
-        <pre><%= link_to artist.print(max), artist %><span class="admin">  | <%= link_to "Edit", edit_artist_path(artist) %> | <%= link_to 'Delete', artist, method: :delete, data: { confirm: 'Are you sure?' } %></span></pre>
+        <pre><%= link_to artist.print(max, true, true), artist %><span class="admin">  | <%= link_to "Edit", edit_artist_path(artist) %> | <%= link_to 'Delete', artist, method: :delete, data: { confirm: 'Are you sure?' } %></span></pre>
       </div>
     </li>
   <% end %>

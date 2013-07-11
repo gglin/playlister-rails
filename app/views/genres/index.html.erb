@@ -1,4 +1,6 @@
-<p id="notice"><%= notice %></p>
+<% if !notice.nil? %>
+  <p id="notice" class="alert"><%= notice %></p>
+<% end %>
 
 <h3>Genres</h3>
 <%= link_to 'Add New Genre', new_genre_path, class: "btn btn-small btn-info" %>
@@ -10,7 +12,7 @@
   <% genrez.each do |genre| %>
     <li>
       <div class="hoverable">
-        <pre><%= link_to genre.print(max), genre %><span class="admin">  | <%= link_to "Edit", edit_genre_path(genre) %> | <%= link_to 'Delete', genre, method: :delete, data: { confirm: 'Are you sure?' } %></span></pre>
+        <pre><%= link_to genre.print(max, true, true, true), genre %><span class="admin">  | <%= link_to "Edit", edit_genre_path(genre) %> | <%= link_to 'Delete', genre, method: :delete, data: { confirm: 'Are you sure?' } %></span></pre>
       </div>
     </li>
   <% end %>

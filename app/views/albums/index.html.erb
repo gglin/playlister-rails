@@ -1,25 +1,25 @@
-<p id="notice"><%= notice %></p>
-
-<h3>Listing albums</h3>
-
-<table>
-  <tr>
-    <th>Name</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @albums.each do |album| %>
-  <tr>
-    <td><%= album.name %></td>
-    <td><%= link_to 'Show', album %></td>
-    <td><%= link_to 'Edit', edit_album_path(album) %></td>
-    <td><%= link_to 'Destroy', album, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
+<% if !notice.nil? %>
+  <p id="notice" class="alert"><%= notice %></p>
 <% end %>
-</table>
 
-<br />
+<h3>Albums</h3>
+<%= link_to 'Add New Album', new_album_path, class: "btn btn-small btn-info" %>
+<hr>
 
-<%= link_to 'New Album', new_album_path %>
+
+<% albumz = @albums.sort_by {|i| i.name.downcase} %>
+<% max_album  = Album.longest_name_length(albumz) %>
+<% max_artist = Artist.longest_name_length(albumz.map{|a| a.artist}) %>
+
+<ol>
+  <pre><strong><%= Album.table_title(max_artist+2, max_album) %></strong></pre>
+  <% albumz.each do |album| %>
+    <li>
+      <div class="hoverable">
+        <pre><%= link_to album.print(max_album, true, max_artist, true), album %><span class="admin">  | <%= link_to "Edit", edit_album_path(album) %> | <%= link_to 'Delete', album, method: :delete, data: { confirm: 'Are you sure?' } %></span></pre>
+      </div>
+    </li>
+  <% end %>
+</ol>
+
+<br>

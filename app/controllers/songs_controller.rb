@@ -14,6 +14,9 @@ class SongsController < ApplicationController
   # GET /songs/1.json
   def show
     @song = Song.find(params[:id])
+    @album_name = @song.album.nil?  ?  ""  : @song.album.name
+    @album_link = @song.album.nil?  ?  "#" : album_path(@song.album)
+
     @video_id = @song.youtube
 
     respond_to do |format|
@@ -28,10 +31,13 @@ class SongsController < ApplicationController
     @song = Song.new
     @action = "Add"
 
-    resource_type = request.referer.split("/")[-2]
-    resource_id   = request.referer.split("/")[-1]
-    @selected_artist = resource_id.to_i  if resource_type = "artists"    
-    @selected_genre  = resource_id.to_i  if resource_type = "genres"
+    if request.referer.is_a? String
+      resource_type = request.referer.split("/")[-2]
+      resource_id   = request.referer.split("/")[-1]
+      @selected_artist = resource_id.to_i  if resource_type = "artists" 
+      @selected_album  = resource_id.to_i  if resource_type = "albums"
+      @selected_genre  = resource_id.to_i  if resource_type = "genres"
+    end
 
     respond_to do |format|
       format.html # new.html.erb
@@ -44,7 +50,8 @@ class SongsController < ApplicationController
     @song = Song.find(params[:id])
     @action = "Update"
 
-    @selected_artist = @song.artist_id    
+    @selected_artist = @song.artist_id
+    @selected_album  = @song.album_id
     @selected_genre  = @song.genre_id
   end
 
