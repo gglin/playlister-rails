@@ -3,6 +3,7 @@ body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, 
     padding: 0;
 }
 
+
 table {
     border-collapse: collapse;
     border-spacing: 0;
@@ -233,7 +234,7 @@ img {
 .header {
     max-width: 980px;
     margin: 0 auto;
-    padding-top: 40px;
+    padding-top: 20px;
     border-bottom: solid 1px #eee;
 }
 

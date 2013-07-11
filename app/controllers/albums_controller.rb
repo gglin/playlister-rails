@@ -25,6 +25,7 @@ class AlbumsController < ApplicationController
   # GET /albums/new.json
   def new
     @album = Album.new
+    @action = "Add"
 
     respond_to do |format|
       format.html # new.html.erb
@@ -35,6 +36,7 @@ class AlbumsController < ApplicationController
   # GET /albums/1/edit
   def edit
     @album = Album.find(params[:id])
+    @action = "Update"
   end
 
   # POST /albums
@@ -73,10 +75,11 @@ class AlbumsController < ApplicationController
   # DELETE /albums/1.json
   def destroy
     @album = Album.find(params[:id])
+    name = @album.name
     @album.destroy
 
     respond_to do |format|
-      format.html { redirect_to albums_url }
+      format.html { redirect_to albums_url, notice: "Album '#{name}' was successfully deleted." }
       format.json { head :no_content }
     end
   end

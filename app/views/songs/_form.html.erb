@@ -1,4 +1,4 @@
-<%= form_for(@song) do |f| %>
+<%= form_for @song, :html => {class: "form-inline"} do |f| %>
   <% if @song.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@song.errors.count, "error") %> prohibited this song from being saved:</h2>
@@ -10,20 +10,27 @@
       </ul>
     </div>
   <% end %>
+  
+  <%= field_set_tag "" do %>
+    <div class="control-group">
+      <%= f.label :name, "Song Name" %>
+      <%= f.text_field :name %>
+    </div>
+    <div class="control-group">
+      <%= f.label  :artist %> (<%= link_to 'Create New', new_artist_path %>)
+      <%= f.collection_select :artist_id, Artist.all.sort_by {|i| i.name.downcase}, :id, :name, {include_blank: 'select an Artist', selected: @selected_artist} %>
+    </div>
+    <div class="control-group">
+      <%= f.label  :genre %>  (<%= link_to 'Create New', new_genre_path %>)
+      <%= f.collection_select :genre_id,  Genre.all.sort_by {|i| i.name.downcase}, :id, :name,  {include_blank: 'select a Genre', selected: @selected_genre} %>
+    </div>
+    <div class="actions">
+  <% end %>
 
-  <div class="field">
-    <%= f.label :name, "Song Name" %><br />
-    <%= f.text_field :name %>
+    <%= f.submit "#{@action} Song", class: "btn btn-primary" %>
+    <%# %w{primary info success warning danger inverse link}.each do |i| %>
+      <%# f.submit "Create New Song", class: "btn btn-#{i}" %>
+    <%# end %>
   </div>
-  <div class="field">
-    <%= f.label  :artist %> (<%= link_to 'Create New', new_artist_path %>)<br />
-    <%= f.collection_select :artist_id, Artist.all.sort_by {|i| i.name.downcase}, :id, :name, {:include_blank => 'select an Artist', :selected => @selected_artist} %>
-  </div>
-  <div class="field">
-    <%= f.label  :genre %>  (<%= link_to 'Create New', new_genre_path %>)<br />
-    <%= f.collection_select :genre_id,  Genre.all.sort_by {|i| i.name.downcase}, :id, :name,  {:include_blank => 'select a Genre', :selected => @selected_genre} %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+
 <% end %>

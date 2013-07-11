@@ -9,32 +9,14 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require_directory "."
- * require_tree .
+ 
+ * require_directory .
+ * require_tree ../../../vendor/assets/stylesheets/.
+ *= require_tree .
+ *= require flat-ui
+ *= require font-awesome
+ *= require override
  */
 
+@import "bootstrap";
 
-pre {
-    background: #fff;
-    font-size: 14px;
-}
-
-th, td {
-    padding: 3px;
-}
-
-.hoverable .admin {
-    display: none;
-}
-
-.hoverable:hover .admin {
-    display: inline;
-}
-
-.admin td {
-    text-align: center;
-}
-
-.reset-font {
-    font-size: 14px;
-}

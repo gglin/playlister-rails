@@ -1,19 +1,19 @@
 <p id="notice"><%= notice %></p>
 
-
 <h3><%= link_to "Songs", songs_path %></h3>
 <div class="hoverable">
   <h2><strong><%= @song.print(nil, true, nil, false) %></strong>
   <span class="admin reset-font">
     | <%= link_to 'Edit', edit_song_path(@song) %>
-    | <%= link_to 'Back', songs_path %>
+    | <%= link_to 'Delete', @song, method: :delete, data: { confirm: 'Are you sure?' } %>
   </span>
   </h2>
 </div>
 
 <ul>
 Artist: <%= link_to @song.artist.name, artist_path(@song.artist) %><br>
-Genre:  <%= link_to @song.genre.name,  genre_path(@song.genre)   %>
+Album:  <%# link_to @song.album.name,  album_path(@song.album)   %><br>
+Genre:  <%= link_to @song.genre.name,  genre_path(@song.genre)   %><br>
 </ul>
 
 <br>

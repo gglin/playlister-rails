@@ -1,4 +1,4 @@
-<%= form_for(@album) do |f| %>
+<%= form_for @album, :html => {class: "form-inline"} do |f| %>
   <% if @album.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@album.errors.count, "error") %> prohibited this album from being saved:</h2>
@@ -11,11 +11,14 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
+  <%= field_set_tag "" do %>
+    <div class="control-group">
+      <%= f.label :name %><br />
+      <%= f.text_field :name %>
+    </div>
+  <% end %>
+
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "#{@action} Album", class: "btn btn-primary" %>
   </div>
 <% end %>

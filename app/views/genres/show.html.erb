@@ -5,7 +5,8 @@
   <h2><strong><%= @genre.name %></strong>
   <span class="admin reset-font">
     | <%= link_to 'Edit', edit_genre_path(@genre) %>
-    | <%= link_to 'Back', genres_path %>
+    | <%= link_to 'Delete', @genre, method: :delete, data: { confirm: 'Are you sure?' } %>
+    | <%= link_to "Add Song", new_song_path, class: "btn btn-small btn-info" %>
   </span>
   </h2>
 </div>
@@ -20,7 +21,7 @@
     <th></th>
     <th></th>
   </tr>
-  <% songz = @genre.songs.sort{|s1, s2| s1.artist.name.downcase <=> s2.artist.name.downcase} %>
+  <% songz = @genre.songs.sort_by {|i| i.artist.name.downcase} %>
   <% songz.each_with_index do |song, index| %>
     <tr class="hoverable">
       <td><%= index + 1 %></td>
@@ -34,7 +35,5 @@
 </table>
 
 <br>
-
-<%= link_to "Add Song", new_song_path %>
 
 <br>

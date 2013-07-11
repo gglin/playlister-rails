@@ -26,6 +26,7 @@ class SongsController < ApplicationController
   # GET /songs/new.json
   def new
     @song = Song.new
+    @action = "Add"
 
     resource_type = request.referer.split("/")[-2]
     resource_id   = request.referer.split("/")[-1]
@@ -41,6 +42,7 @@ class SongsController < ApplicationController
   # GET /songs/1/edit
   def edit
     @song = Song.find(params[:id])
+    @action = "Update"
 
     @selected_artist = @song.artist_id    
     @selected_genre  = @song.genre_id
@@ -82,10 +84,11 @@ class SongsController < ApplicationController
   # DELETE /songs/1.json
   def destroy
     @song = Song.find(params[:id])
+    name = @song.name
     @song.destroy
 
     respond_to do |format|
-      format.html { redirect_to songs_url }
+      format.html { redirect_to songs_url, notice: "Song '#{name}' was successfully deleted." }
       format.json { head :no_content }
     end
   end

@@ -27,6 +27,8 @@ group :development do
   gem 'pry-debugger'
 end
 
+gem "flatui-rails"
+
 gem 'awesome_print', :require => 'ap'
 
 gem 'youtube_search'

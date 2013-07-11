@@ -25,6 +25,7 @@ class GenresController < ApplicationController
   # GET /genres/new.json
   def new
     @genre = Genre.new
+    @action = "Add"
 
     respond_to do |format|
       format.html # new.html.erb
@@ -35,6 +36,7 @@ class GenresController < ApplicationController
   # GET /genres/1/edit
   def edit
     @genre = Genre.find(params[:id])
+    @action = "Update"
   end
 
   # POST /genres
@@ -74,10 +76,11 @@ class GenresController < ApplicationController
   # DELETE /genres/1.json
   def destroy
     @genre = Genre.find(params[:id])
+    name = @genre.name
     @genre.destroy
 
     respond_to do |format|
-      format.html { redirect_to genres_url }
+      format.html { redirect_to genres_url, notice: "Genre '#{name}' was successfully deleted." }
       format.json { head :no_content }
     end
   end

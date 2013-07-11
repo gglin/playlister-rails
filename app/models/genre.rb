@@ -15,6 +15,6 @@ class Genre < ActiveRecord::Base
   def print(width = nil, *args)
     song_word   = self.songs.size   == 1 ? "Song" : "Songs"
     artist_word = self.artists.size == 1 ? "Artist" : "Artists"
-    "#{spacer(self.name+':',width)} #{spacer(self.artists.size.to_s + ' ' + artist_word + ', ' + self.songs.size.to_s + ' ' + song_word, 21)}"
+    "#{spacer(self.name+':',width)}   #{spacer(self.artists.size.to_s + ' ' + artist_word + ', ' + self.songs.size.to_s + ' ' + song_word, 21)}"
   end
 end

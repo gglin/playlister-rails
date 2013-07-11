@@ -1,34 +1,11 @@
-<!-- <h1>Listing artists</h1>
-
-<table>
-  <tr>
-    <th>Name</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<%# @artists.each do |artist| %>
-  <tr>
-    <td><%# artist.name %></td>
-    <td><%# link_to 'Show', artist %></td>
-    <td><%# link_to 'Edit', edit_artist_path(artist) %></td>
-    <td><%# link_to 'Destroy', artist, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<%# end %>
-</table>
-
-<br />
-
-
- -->
+<p id="notice"><%= notice %></p>
 
 <h3>Artists</h3>
-<h5><%= link_to 'Add New Artist', new_artist_path %></h5>
+<%= link_to 'Add New Artist', new_artist_path, class: "btn btn-small btn-info" %>
 <hr>
 
 <ol>
-  <% artistz = @artists.sort{|a1, a2| a1.name.downcase <=> a2.name.downcase} %>
+  <% artistz = @artists.sort_by {|i| i.name.downcase} %>
   <% max = Artist.longest_name_length(artistz) %>
   <% artistz.each do |artist| %>
     <li>

@@ -25,6 +25,7 @@ class ArtistsController < ApplicationController
   # GET /artists/new.json
   def new
     @artist = Artist.new
+    @action = "Add"
 
     respond_to do |format|
       format.html # new.html.erb
@@ -35,6 +36,7 @@ class ArtistsController < ApplicationController
   # GET /artists/1/edit
   def edit
     @artist = Artist.find(params[:id])
+    @action = "Update"
   end
 
   # POST /artists
@@ -44,7 +46,7 @@ class ArtistsController < ApplicationController
 
     respond_to do |format|
       if @artist.save
-        format.html { redirect_to @artist, notice: 'Artist was successfully created.' }
+        format.html { redirect_to @artist, notice: "Artist was successfully created." }
         format.json { render json: @artist, status: :created, location: @artist }
       else
         format.html { render action: "new" }
@@ -60,7 +62,7 @@ class ArtistsController < ApplicationController
 
     respond_to do |format|
       if @artist.update_attributes(params[:artist])
-        format.html { redirect_to @artist, notice: 'Artist was successfully updated.' }
+        format.html { redirect_to @artist, notice: "Artist was successfully updated." }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -73,10 +75,11 @@ class ArtistsController < ApplicationController
   # DELETE /artists/1.json
   def destroy
     @artist = Artist.find(params[:id])
+    name = @artist.name
     @artist.destroy
 
     respond_to do |format|
-      format.html { redirect_to artists_url }
+      format.html { redirect_to artists_url, notice: "Artist '#{name}' was successfully deleted." }
       format.json { head :no_content }
     end
   end

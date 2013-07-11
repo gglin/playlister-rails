@@ -5,15 +5,19 @@
 
   <br>
   <h3>Browse by:</h3>
+    <h4>
     <li><%= link_to 'Artist', artists_path %></li>
     <li><%= link_to 'Song',   songs_path %>  </li>
     <li><%= link_to 'Genre',  genres_path %> </li>
+    </h4>
   <br>
 
   <h4>
     <%= link_to 'Add New Song',   new_song_path %>
     <br>
     <%= link_to 'Add New Artist', new_artist_path %>
+    <br>
+    <%= link_to 'Add New Genre',  new_genre_path %>
   </h4>
 
 </div>

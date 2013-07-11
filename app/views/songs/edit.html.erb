@@ -1,6 +1,13 @@
-<h1>Editing song</h1>
+<h3>Editing song</h3>
 
-<%= render 'form' %>
+<div class="row">
+  <div class="span6">
 
-<%= link_to 'Show', @song %> |
-<%= link_to 'Back', songs_path %>
+    <%= render 'form' %>
+
+  </div>
+
+  <%= link_to 'Show', @song %> |
+  <%= link_to 'Back', songs_path %>
+</div>
+
