@@ -8,7 +8,7 @@
   <span class="admin reset-font">
     | <%= link_to 'Edit', edit_genre_path(@genre) %>
     | <%= link_to 'Delete', @genre, method: :delete, data: { confirm: 'Are you sure?' } %>
-    | <%= link_to "Add Song", new_song_path, class: "btn btn-small btn-info" %>
+    | <%= link_to '<span class="fui-plus-16"></span> Add Song'.html_safe, new_song_path, class: "btn btn-small btn-info" %>
   </span>
   </h2>
 </div>
