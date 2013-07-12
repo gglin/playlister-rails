@@ -1,24 +1,125 @@
+html body {
+  background: black url(/assets/coolmusic.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
 
 a {
+  /*color: #2980B9;*/
   text-decoration: none;
 }
 
-/*a:hover {
-  text-decoration: underline;
+body {
+  padding-top: 100px;
+}
+
+
+/*******************/
+/* Navbar elements */
+/*******************/
+
+.navbar-container {
+  max-width: 980px;
+  margin: 0 auto;
+  padding-top: 0px;
+}
+
+.navbar .brand {
+  padding-bottom: 0px;
+  padding-top: 0px;
+}
+
+.navbar-footer {
+  background: none;
+  border: none;
+  font-size: 12px;
+}
+
+.navbar-footer .navbar-inner {
+  background: none;
+  border: none;
+  font-size: 12px;
+}
+.navbar-footer nav ul 
+{
+  background: none;
+  border: none;
+  font-size: 12px;
+}
+
+/**************/
+/* Containers */
+/**************/
+
+.container {
+  background: rgb(255, 255, 255);
+  background: rgba(255, 255, 255, 0.9);
+  padding: 20px;
+  border: 2px solid grey;
+  min-height: 500px;
+  max-height: 800px;
+}
+
+.content-scroll {
+  overflow: auto;
+  max-height: 700px;
+  position: relative;
+}
+
+
+/******************/
+/* Table elements */
+/******************/
+/*
+table {
+  table-layout: fixed;
 }*/
 
+th, td {
+  padding: 3px;
+}
+
+
+.td-link td a { 
+  display: block; 
+  width:  100%; 
+  height: 100%; 
+}
+
+
+
+/*.outer-table-wrapper {
+  position: relative;
+  padding: 2em 0 0 0;
+  margin: 0 auto 0 auto;
+}*/
+
+.inner-table-wrapper {
+  overflow: auto;
+  max-height: 650px;
+}
+
+
+/******************/
+/* Preformatted   */
+/******************/
+
 pre {
-  background: #fff;
-  font-family: Menlo, 'Droid Sans Mono', Monaco, Consolas, "Courier New", monospace;
+  background: inherit;
+  font-family: 'Droid Sans Mono', Menlo, Monaco, Consolas, "Courier New", monospace;
   font-size: 14px;
+  text-decoration: bold;
   border: 0;
   padding: 0;
   margin: 0;
 }
 
-th, td {
-  padding: 3px;
-}
+
+/******************/
+/* Hoverables     */
+/******************/
 
 .hoverable .admin {
   display: none;
@@ -35,6 +136,11 @@ th, td {
 .reset-font {
   font-size: 14px;
 }
+
+
+/***********/
+/* Buttons */
+/***********/
 
 body a.btn {
   color: #fff;

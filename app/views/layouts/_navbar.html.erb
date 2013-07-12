@@ -1,0 +1,23 @@
+<div class="navbar navbar-fixed-top navbar-inverse">
+  <div class="navbar-inner">
+    <div class="navbar-container">
+      <h1><a href="/" class="brand"> Playlisterrr </a></h1>
+      <ul class="nav all-stats">
+        <li><%= link_to "Artists", artists_path %></li>
+        <li><%= link_to "Albums",  albums_path  %></li>
+        <li><%= link_to "Songs",   songs_path   %></li>
+        <li><%= link_to "Genres",  genres_path  %></li>
+      </ul>
+       <ul class="nav all-stats pull-right">
+        <%# if user_signed_in? %>
+         <!--  <li><%# link_to current_user.full_name, profiles_path(current_user.profile_name) %></li>
+          <li><%# link_to "Log Out", destroy_user_session_path, method: :delete %></li>
+        <%# else %>
+          <li><%# link_to "Register", register_path %></li>
+          <li><%# link_to "Log In", login_path %></li> -->
+          <li><a>Log In</a></li>
+        <%# end %>
+      </ul>       
+    </div>
+  </div>
+</div>

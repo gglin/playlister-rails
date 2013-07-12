@@ -11,15 +11,17 @@
 <% max_album  = Album.longest_name_length(albumz) %>
 <% max_artist = Artist.longest_name_length(albumz.map{|a| a.artist}) %>
 
-<ol>
-  <pre><strong><%= Album.table_title(max_artist+2, max_album) %></strong></pre>
-  <% albumz.each do |album| %>
-    <li>
-      <div class="hoverable">
-        <pre><%= link_to album.print(max_album, true, max_artist, true), album %><span class="admin">  | <%= link_to "Edit", edit_album_path(album) %> | <%= link_to 'Delete', album, method: :delete, data: { confirm: 'Are you sure?' } %></span></pre>
-      </div>
-    </li>
-  <% end %>
-</ol>
+<div class="content-scroll">
+  <ol>
+    <pre><strong><%= Album.table_title(max_artist+2, max_album) %></strong></pre>
+    <% albumz.each do |album| %>
+      <li>
+        <div class="hoverable">
+          <pre><%= link_to album.print(max_album, true, max_artist, true), album %><span class="admin">  | <%= link_to "Edit", edit_album_path(album) %> | <%= link_to 'Delete', album, method: :delete, data: { confirm: 'Are you sure?' } %></span></pre>
+        </div>
+      </li>
+    <% end %>
+  </ol>
+</div>
 
 <br>

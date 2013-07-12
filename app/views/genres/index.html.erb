@@ -6,16 +6,18 @@
 <%= link_to 'Add New Genre', new_genre_path, class: "btn btn-small btn-info" %>
 <hr>
 
-<ol>
-  <% genrez = @genres.sort_by {|i| i.name.downcase} %>
-  <% max = Genre.longest_name_length(genrez) %>
-  <% genrez.each do |genre| %>
-    <li>
-      <div class="hoverable">
-        <pre><%= link_to genre.print(max, true, true, true), genre %><span class="admin">  | <%= link_to "Edit", edit_genre_path(genre) %> | <%= link_to 'Delete', genre, method: :delete, data: { confirm: 'Are you sure?' } %></span></pre>
-      </div>
-    </li>
-  <% end %>
-</ol>
+<div class="content-scroll">
+  <ol>
+    <% genrez = @genres.sort_by {|i| i.name.downcase} %>
+    <% max = Genre.longest_name_length(genrez) %>
+    <% genrez.each do |genre| %>
+      <li>
+        <div class="hoverable">
+          <pre><%= link_to genre.print(max, true, true, true), genre %><span class="admin">  | <%= link_to "Edit", edit_genre_path(genre) %> | <%= link_to 'Delete', genre, method: :delete, data: { confirm: 'Are you sure?' } %></span></pre>
+        </div>
+      </li>
+    <% end %>
+  </ol>
+</div>
 
 <br>

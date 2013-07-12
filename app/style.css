@@ -1273,7 +1273,7 @@ h3#comments {
 
 /* ===[ Section Styles ]===================================================== */
 
-.container {
+.navbar-container {
     max-width: 980px;
     margin: 0 auto;
     padding-top: 140px;
