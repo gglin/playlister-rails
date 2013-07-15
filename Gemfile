@@ -25,11 +25,11 @@ gem 'jquery-rails'
 group :development do
   gem 'shotgun'
   gem 'pry-debugger'
+  gem 'awesome_print', :require => 'ap'
 end
 
 gem "flatui-rails"
 
-gem 'awesome_print', :require => 'ap'
 
 gem 'youtube_search'
 

@@ -5,7 +5,7 @@ class Song < ActiveRecord::Base
   attr_accessible :name, :track
   attr_accessible :artist_id, :genre_id, :album_id
 
-  validates :name, :artist_id, :genre_id, :presence => true 
+  validates :name, :artist_id, :presence => true 
 
   extend  Sluggable::ClassMethods
   include Sluggable::InstanceMethods

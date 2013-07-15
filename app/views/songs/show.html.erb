@@ -1,16 +1,14 @@
 <% if !notice.nil? %>
-  <p id="notice" class="alert"><%= notice %></p>
+  <p id="notice" class="alert alert-success"><%= notice %></p>
 <% end %>
-
 
 <h3><%= link_to "Songs", songs_path %></h3>
 <div class="hoverable">
-  <h2><strong><%= @song.print(nil, true, nil, false) %></strong>
+  <h2 class="inline"><strong><%= @song.print(nil, true, nil, false) %></strong></h2>
   <span class="admin reset-font">
     | <%= link_to 'Edit', edit_song_path(@song) %>
     | <%= link_to 'Delete', @song, method: :delete, data: { confirm: 'Are you sure?' } %>
   </span>
-  </h2>
 </div>
 
 <ul>

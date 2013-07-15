@@ -1,9 +1,8 @@
 <% if !notice.nil? %>
-  <p id="notice" class="alert"><%= notice %></p>
+  <p id="notice" class="alert alert-success"><%= notice %></p>
 <% end %>
 
-<h3>Genres</h3>
-<%= link_to '<span class="fui-plus-16"></span> Add New Genre'.html_safe, new_genre_path, class: "btn btn-small btn-info" %>
+<%= render partial: "layouts/hoverable_index_title", locals: {category: @genres} %>
 <hr>
 
 <div class="content-scroll">

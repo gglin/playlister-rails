@@ -20,7 +20,7 @@
 
     <div class="control-group">
       <%= f.label  :artist %> (<%= link_to 'Create New', new_artist_path %>)
-      <%= f.collection_select :artist_id, Artist.all.sort_by {|i| i.name.downcase}, :id, :name, {include_blank: 'select an Artist', selected: @selected_artist} %>
+      <%= f.collection_select :artist_id, Artist.all.sort_by {|i| i.name.downcase}, :id, :name, {include_blank: 'select an Artist', selected: @selected_artist}, class: "select-block" %>
     </div>
 
     <div class="control-group">

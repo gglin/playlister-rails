@@ -15,5 +15,4 @@
 //= require jquery_ujs
 //= require bootstrap
 //= 
-//= require jquery.stickytableheaders.js
 
