@@ -7,7 +7,7 @@
 
 <div class="content-scroll">
   <ol>
-    <% artistz = @artists.sort_by {|i| i.name.downcase} %>
+    <% artistz = @artists.sort_by {|i| i.sort_name.downcase} %>
     <% max = Artist.longest_name_length(artistz) %>
     <% artistz.each do |artist| %>
       <li>

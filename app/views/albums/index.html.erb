@@ -24,7 +24,7 @@
 
     <table id="albums" class="table table-striped table-condensed">
       <tbody>
-      <% albumz = @albums.sort_by {|i| i.name.downcase} %>
+      <% albumz = @albums.sort_by {|i| i.sort_name.downcase} %>
       <% albumz.each_with_index do |album, index| %>
         <% genre = album.primary_genre || "" %>
         <tr class="hoverable td-link">

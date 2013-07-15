@@ -1,6 +1,14 @@
 module Prettifiable
   module InstanceMethods
 
+    def sort_name()
+      if name[0..3].downcase == "the "
+        "#{name[4..-1]}, The"
+      else
+        name
+      end
+    end
+
     def spacer(name, width = nil)
       self.class.spacer(name, width)
     end

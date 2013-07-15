@@ -26,10 +26,10 @@ class Album < ActiveRecord::Base
 
   def primary_genre()
     return nil if self.songs.empty?
-    genres.first
+    genres_sorted.first
   end
 
-  def genres()
+  def genres_sorted()
     genres_freq = Hash.new(0)
     self.songs.each do |song|
       genres_freq[song.genre] += 1

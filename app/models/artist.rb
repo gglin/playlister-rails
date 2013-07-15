@@ -23,10 +23,8 @@ class Artist < ActiveRecord::Base
   end
 
   def primary_genre()
-    
   end
 
   def assign_genre_to_all_songs()
-    
   end
 end
