@@ -31,10 +31,11 @@ group :development do
   gem 'awesome_print', :require => 'ap'
 end
 
-gem "flatui-rails"
-
+gem 'flatui-rails'
 
 gem 'youtube_search'
+gem 'lastfm'
+
 
 
 # To use ActiveModel has_secure_password
