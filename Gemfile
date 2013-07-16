@@ -21,6 +21,7 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'fancybox-rails'
 
 group :production do
   gem 'therubyracer'
@@ -29,11 +30,11 @@ end
 group :development do
   gem 'shotgun'
   gem 'pry-debugger'
-<<<<<<< HEAD
 
-=======
+
+
   gem 'awesome_print', :require => 'ap'
->>>>>>> 2d1dbc6ffd6e6ba4814241c0cfd3cdbcb407dbbb
+
 end
 
 gem 'flatui-rails'

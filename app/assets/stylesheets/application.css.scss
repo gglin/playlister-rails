@@ -15,6 +15,9 @@
  *= require flat-ui
  *= require font-awesome
  *= require override
+ *= require_self
+ *= require fancybox
+ *= require_tree .
  */
 
 // @import "bootstrap";

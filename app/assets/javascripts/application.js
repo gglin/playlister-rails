@@ -12,6 +12,7 @@
 //
 // require_tree .
 //= require jquery
+//= require fancybox
 //= require jquery_ujs
 //= require bootstrap
 // require_tree ../../../vendor/assets/javascripts/.
