@@ -25,7 +25,7 @@
         
         <%  is_checked  =  @playlist.song_ids.include?(song.id)  ?  true  :  false %>
         <%= check_box_tag 'playlist[song_ids][]', song.id, is_checked, {:"data-toggle" => "checkbox"} %>
-        <%= label_tag 'playlist[song][name]', song.print(nil, true, nil, false) %><br>
+        <%= label_tag     'playlist[song][name]', song.print(nil, true, nil, false) %><br>
 
       <% end %>
     </div>
