@@ -37,7 +37,11 @@
           <td><%= index + 1 %></td>
           <td><%= link_to truncate(song.artist.name, length: 30), artist_path(song.artist) %></td>
           <td><%= link_to truncate(album_name, length: 30),       album_link               %></td>
-          <td><%= link_to truncate(song.name, length: 40),        song                     %></td>
+          <td>
+            <span href="#" class="has_popover" data-toggle="popover", title="<a href='<%= song_path(song) %>'><%= song.name %></a>" data-content="<a href='/'>Add to Playlist</a> | <a href='<%= edit_song_path(song) %>'>Edit</a>">
+              <%= link_to truncate(song.name, length: 40), song %>
+            </span>
+          </td>
           <td><%= link_to truncate(genre_name, length: 20),       genre_link               %></td>
           
           <td> <div class="admin"> <%= link_to "Edit ", edit_song_path(song) %> </div></td>
