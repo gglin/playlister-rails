@@ -16,3 +16,12 @@
 //= require bootstrap
 //= 
 
+
+// Custom checkboxes
+$('.checkbox').checkbox();
+
+// Custom radios
+$('.radio').radio();
+
+// Custom Selects
+$("select").selectpicker();
