@@ -2,6 +2,7 @@ class Genre < ActiveRecord::Base
   has_many :songs
   has_many :artists, :through => :songs
   has_many :albums,  :through => :songs
+  
   attr_accessible :name
 
   validates_uniqueness_of :name, :case_sensitive => false

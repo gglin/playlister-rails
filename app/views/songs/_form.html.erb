@@ -35,6 +35,19 @@
 
   <% end %>
 
+  <fieldset>
+    <legend>Add to Playlists (<%= link_to 'Create New', new_playlist_path %>):</legend>
+    <div class="control-group content-scroll">
+      <% Playlist.all.sort_by {|i| i.name.downcase}.each do |playlist| %>
+        
+        <%  is_checked  =  @song.playlist_ids.include?(playlist.id)  ?  true  :  false %>
+        <%= check_box_tag 'song[playlist_ids][]', playlist.id, is_checked, {:"data-toggle" => "checkbox"} %>
+        <%= label_tag     'song[playlist][name]', playlist.name %><br>
+
+      <% end %>
+    </div>
+  </fieldset>
+
   <div class="actions">
     <%= f.submit "#{@action} Song", class: "btn btn-primary" %>
     <%# %w{primary info success warning danger inverse link}.each do |i| %>

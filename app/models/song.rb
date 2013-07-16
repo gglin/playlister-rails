@@ -1,9 +1,13 @@
 class Song < ActiveRecord::Base
+  has_many :playlists_songs
+  has_many :playlists, :through => :playlists_songs
+
   belongs_to :artist
   belongs_to :genre
   belongs_to :album
+
   attr_accessible :name, :track
-  attr_accessible :artist_id, :genre_id, :album_id
+  attr_accessible :artist_id, :genre_id, :album_id, :playlist_ids
 
   validates :name, :artist_id, :presence => true 
 
