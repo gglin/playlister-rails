@@ -22,18 +22,25 @@ end
 
 gem 'jquery-rails'
 
+group :production do
+  gem 'therubyracer'
+end
 
 group :development do
   gem 'shotgun'
   gem 'pry-debugger'
+<<<<<<< HEAD
 
+=======
+  gem 'awesome_print', :require => 'ap'
+>>>>>>> 2d1dbc6ffd6e6ba4814241c0cfd3cdbcb407dbbb
 end
 
-gem "flatui-rails"
-
-gem 'awesome_print', :require => 'ap'
+gem 'flatui-rails'
 
 gem 'youtube_search'
+gem 'lastfm'
+
 
 
 # To use ActiveModel has_secure_password

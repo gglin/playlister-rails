@@ -1,19 +1,14 @@
 <% if !notice.nil? %>
-  <p id="notice" class="alert"><%= notice %></p>
+  <p id="notice" class="alert alert-success"><%= notice %></p>
 <% end %>
 
-<h3><%= link_to 'Artists', artists_path %></h3>
-<div class="hoverable">
-  <h2><strong><%= @artist.name %></strong>
-  <span class="admin reset-font">
-    | <%= link_to 'Edit', edit_artist_path(@artist) %>
-    | <%= link_to 'Delete', @artist, method: :delete, data: { confirm: 'Are you sure?' } %>
-    | <%= link_to '<span class="fui-plus-16"></span> Add Song'.html_safe, new_song_path, class: "btn btn-small btn-info" %>
-  </span>
-  </h2>
-</div>
+<%= render partial: "layouts/hoverable_title", locals: {category: @artist} %>
 
 </br>
+
+
+<div class="artist-background" style="background-image: url(<%= @artist.get_art %>) no-repeat 0 50%">
+<%= image_tag(@artist.get_art) %>
 
 <table>
   <tr>
@@ -28,18 +23,18 @@
   <% songz.each_with_index do |song, index| %>
     <% album_name = song.album.nil?  ?  ""  : song.album.name  %>
     <% album_link = song.album.nil?  ?  "#" : album_path(song.album) %>
-    <tr class="hoverable">
+    <tr class="hoverable td-link">
       <td><%= index + 1 %></td>
       <td><%= link_to truncate(album_name, length: 30), album_link             %></td>
       <td><%= link_to truncate(song.name, length: 40),  song                   %></td>
-      <td><%= link_to "[#{song.genre.name}]",           genre_path(song.genre) %></td>
+      <td><%= link_to song.genre.name,           genre_path(song.genre) %></td>
       
-      <td> <div class="admin"> | <%= link_to "Edit ", edit_song_path(song) %> </div></td>
-      <td> <div class="admin"> | <%= link_to "Delete", song, method: :delete, data: { confirm: 'Are you sure?' } %> </div></td>
+      <td> <div class="admin"> <%= link_to "Edit ", edit_song_path(song) %> </div></td>
+      <td> <div class="admin"> <%= link_to "Delete", song, method: :delete, data: { confirm: 'Are you sure?' } %> </div></td>
     </tr>
   <% end %>
 </table>
 
-<br>
+<br><br>
 
-<br>
+</div>

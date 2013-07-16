@@ -27,6 +27,12 @@ class AlbumsController < ApplicationController
     @album = Album.new
     @action = "Add"
 
+    if request.referer.is_a? String
+      resource_type = request.referer.split("/")[-2]
+      resource_id   = request.referer.split("/")[-1]
+      @selected_artist = resource_id.to_i  if resource_type = "artists" 
+    end
+
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @album }
@@ -37,6 +43,8 @@ class AlbumsController < ApplicationController
   def edit
     @album = Album.find(params[:id])
     @action = "Update"
+
+    @selected_artist = @album.artist_id
   end
 
   # POST /albums

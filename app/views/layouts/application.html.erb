@@ -18,63 +18,19 @@
   
 </head>
 
-<body id="scroll-header">
+<body>
 
-  <!-- Begin Main Wrapper -->
-  <div class="main-wrapper">
+  <%= render "layouts/navbar" %>
 
-    <%= render "layouts/navbar" %>
+  <!-- Begin Content -->
+  <div class="container">
 
-    <!-- Begin Content -->
-    <div class="container">
+    <%= yield %>
 
-      <%= yield %>
-
-    </div>
-    <!-- <div class="clear"></div> -->
-    <!-- End Content -->
   </div>
-  <!-- End Main Wrapper -->
+  <!-- End Content -->
 
-
-  <!-- Begin Footer -->
-  <div class="navbar navbar-footer">
-    <div class="navbar-inner">
-      <div class="navbar-container">
-      <ul class="nav">
-        <li>
-          <a href="https://twitter.com/flatironschool">
-            <i class="icon-twitter icon-2x"></i>
-          </a>
-        </li>
-        <li>
-          <a href="http://www.facebook.com/FlatironSchool">
-            <i class="icon-facebook-sign icon-2x"></i>
-          </a>
-        </li>
-        <li>
-          <a href="http://instagram.com/flatironschool">
-            <i class="icon-camera-retro icon-2x"></i>
-          </a>
-        </li>
-        <li>
-          <a href="https://github.com/organizations/flatiron-school">
-            <i class="icon-github-alt icon-2x"></i>
-          </a>
-        </li>
-      </ul>
-
-      <ul class="nav pull-right" style="display:table-cell; vertical-align:middle">
-        <li>
-          <a>
-          &copy; 2013. Flatiron 002 Team Rogue.  All Your Music Are Belong To Us.
-        </a>
-        </li>
-      </ul>
-      </div>
-    </div>
-  </div>
-  <!-- End Footer -->
+  <%= render "layouts/footer" %>
 
 </body>
 </html>

@@ -1,10 +1,10 @@
 class Album < ActiveRecord::Base
-  has_many   :songs
+  has_many   :songs,  dependent: :destroy
   has_many   :genres, :through => :songs
   belongs_to :artist
   attr_accessible :name, :artist_id
 
-  validates :name, :presence => true 
+  validates :name, :artist_id, :presence => true 
 
   extend  Sluggable::ClassMethods
   include Sluggable::InstanceMethods
@@ -25,7 +25,17 @@ class Album < ActiveRecord::Base
   end
 
   def primary_genre()
-    
+    return nil if self.songs.empty?
+    genres_sorted.first
+  end
+
+  def genres_sorted()
+    genres_freq = Hash.new(0)
+    self.songs.each do |song|
+      genres_freq[song.genre] += 1
+    end
+    genres_freq = Hash[*genres_freq.sort_by{|k,v| v}.reverse.flatten]
+    genres_freq.keys
   end
 
   def assign_genre_to_all_songs()

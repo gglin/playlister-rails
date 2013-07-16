@@ -1,0 +1,5 @@
+<% type  = category.first.class.to_s.downcase %>
+<% types = type.pluralize %>
+
+<h3><%= types.titleize %></h3>
+<%= link_to "<span class='fui-plus-16'></span> Add New #{type.titleize}".html_safe, self.send("new_#{type}_path"), class: "btn btn-small btn-info" %>

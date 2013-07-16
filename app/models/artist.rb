@@ -23,10 +23,21 @@ class Artist < ActiveRecord::Base
   end
 
   def primary_genre()
-    
   end
 
   def assign_genre_to_all_songs()
+  end
+
+  def get_art()
+    artist_info["image"][-1]["content"]
+  end
+
+  def artist_info
+    apikey    = "4cd656bf335d5baa637bc52590fcb291"
+    apisecret = "a35277ca92d08df45e65db32ae806a0a"
+    lastfm = Lastfm.new(apikey, apisecret)
     
+    all_results = lastfm.artist.search(artist: name, api_key: apikey)["results"]["artistmatches"]["artist"]
+    all_results.is_a?(Array)  ?  all_results.first  :  all_results
   end
 end

@@ -1,14 +1,13 @@
 <% if !notice.nil? %>
-  <p id="notice" class="alert"><%= notice %></p>
+  <p id="notice" class="alert alert-success"><%= notice %></p>
 <% end %>
 
-<h3>Artists</h3>
-<%= link_to '<span class="fui-plus-16"></span> Add New Artist'.html_safe, new_artist_path, class: "btn btn-small btn-info" %>
+<%= render partial: "layouts/hoverable_index_title", locals: {category: @artists} %>
 <hr>
 
 <div class="content-scroll">
   <ol>
-    <% artistz = @artists.sort_by {|i| i.name.downcase} %>
+    <% artistz = @artists.sort_by {|i| i.sort_name.downcase} %>
     <% max = Artist.longest_name_length(artistz) %>
     <% artistz.each do |artist| %>
       <li>

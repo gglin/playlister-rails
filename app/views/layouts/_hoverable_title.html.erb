@@ -1,0 +1,20 @@
+<% type  = category.class.to_s.downcase %>
+<% types = type.pluralize %>
+
+<h3><%= link_to types.titleize, self.send("#{types}_path") %></h3>
+
+<div class="hoverable">
+
+  <h2 class="inline"><strong><%= category.name %></strong></h2>
+
+  <span class="admin reset-font">
+
+    <%= link_to '<span class="fui-new-16"></span> Edit'.html_safe, self.send("edit_#{type}_path", category), class: "btn btn-small btn-warning" %>
+
+    <%= link_to '<span class="fui-cross-16"></span> Delete'.html_safe, category, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-small btn-danger" %>
+
+    <%= link_to '<span class="fui-plus-16"></span> Add Song'.html_safe, self.send("new_song_path"), class: "btn btn-small btn-info" %>
+
+  </span>
+
+</div>

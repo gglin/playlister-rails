@@ -1,51 +1,53 @@
 <% if !notice.nil? %>
-  <p id="notice" class="alert"><%= notice %></p>
+  <p id="notice" class="alert alert-success"><%= notice %></p>
 <% end %>
 
-<h3>Songs</h3>
-<%= link_to '<span class="fui-plus-16"></span> Add New Song'.html_safe, new_song_path, class: "btn btn-small btn-info" %>
+<%= render partial: "layouts/hoverable_index_title", locals: {category: @songs} %>
 <hr>
 
-<div >
+   <table id="songs_headings">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Artist</th>
+        <th>Album</th>
+        <th>Song</th>
+        <th>Genre</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+  </table>
+
+<!-- <div class="outer-table-wrapper"> -->
   <div class="inner-table-wrapper">
-    <table>
 
-      <thead>
-        <tr>
-          <th></th>
-          <th>Artist</th>
-          <th>Album</th>
-          <th>Song</th>
-          <th>Genre</th>
-          <th></th>
-          <th></th>
-        </tr>
-      </thead>
-
+    <table id="songs" class="table table-striped table-condensed">
       <tbody>
-      <% songz = @songs.sort_by {|i| i.name.downcase} %>
+      <% songz = @songs.sort_by {|i| i.sort_name.downcase} %>
       <% songz.each_with_index do |song, index| %>
+
         <% album_name = song.album.nil?  ?  ""  : song.album.name  %>
+        <% genre_name = song.genre.nil?  ?  ""  : song.genre.name  %>
+        
         <% album_link = song.album.nil?  ?  "#" : album_path(song.album) %>
+        <% genre_link = song.genre.nil?  ?  "#" : genre_path(song.genre) %>
+
         <tr class="hoverable td-link">
           <td><%= index + 1 %></td>
           <td><%= link_to truncate(song.artist.name, length: 30), artist_path(song.artist) %></td>
           <td><%= link_to truncate(album_name, length: 30),       album_link               %></td>
           <td><%= link_to truncate(song.name, length: 40),        song                     %></td>
-          <td><%= link_to song.genre.name,                        genre_path(song.genre)   %></td>
+          <td><%= link_to truncate(genre_name, length: 20),       genre_link               %></td>
           
           <td> <div class="admin"> <%= link_to "Edit ", edit_song_path(song) %> </div></td>
           <td> <div class="admin"> <%= link_to "Delete", song, method: :delete, data: { confirm: 'Are you sure?' } %> </div></td>
         </tr>
       <% end %>
       </tbody>
-
     </table>
+    
   </div>
-</div>
+<!-- </div> -->
 
 </br>
-
-<script type="text/javascript">
-  $("table").stickyTableHeaders();
-</script>
