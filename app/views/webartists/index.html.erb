@@ -2,7 +2,7 @@
   <p id="notice" class="alert alert-success"><%= notice %></p>
 <% end %>
 <h1>Most Played Artists</h1>
-<p><i>The week of <%= Date.today.at_beginning_of_week.to_formatted_s(:long_ordinal) %></i></p>
+<p><i>Week of <%= Date.today.at_beginning_of_week.to_formatted_s(:long_ordinal) %></i></p>
 <div  class="content-scroll">
   <ol>
     <% Artist.top_artists.each do |artist| %>
@@ -15,5 +15,3 @@
   </ol>
 
 </div>
-
-<br>

@@ -1,8 +1,7 @@
-class Artist < ActiveRecord::Base
+class Webartist < ActiveRecord::Base
   has_many :songs,  dependent: :destroy
   has_many :albums
   has_many :genres, :through => :songs
-  
   attr_accessible :name
 
   validates_uniqueness_of :name, :case_sensitive => false
