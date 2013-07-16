@@ -40,4 +40,14 @@ class Artist < ActiveRecord::Base
     all_results = lastfm.artist.search(artist: name, api_key: apikey)["results"]["artistmatches"]["artist"]
     all_results.is_a?(Array)  ?  all_results.first  :  all_results
   end
+
+
+  def self.top_artists
+    apikey    = "4cd656bf335d5baa637bc52590fcb291"
+    apisecret = "a35277ca92d08df45e65db32ae806a0a"
+    lastfm = Lastfm.new(apikey, apisecret)
+    
+    all_results = lastfm.chart.get_top_artists.collect {|artist| artist["name"]}
+  end
+
 end

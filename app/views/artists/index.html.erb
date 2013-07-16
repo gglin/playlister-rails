@@ -2,21 +2,17 @@
   <p id="notice" class="alert alert-success"><%= notice %></p>
 <% end %>
 
-<%= render partial: "layouts/hoverable_index_title", locals: {category: @artists} %>
-<hr>
-
-<div class="content-scroll">
+<div  class="content-scroll">
   <ol>
-    <% artistz = @artists.sort_by {|i| i.sort_name.downcase} %>
-    <% max = Artist.longest_name_length(artistz) %>
-    <% artistz.each do |artist| %>
+    <% Artist.top_artists.each do |artist| %>
       <li>
         <div class="hoverable">
-          <pre><%= link_to artist.print(max, true, true), artist %><span class="admin">  | <%= link_to "Edit", edit_artist_path(artist) %> | <%= link_to 'Delete', artist, method: :delete, data: { confirm: 'Are you sure?' } %></span></pre>
+          <pre><%= link_to artist %><span class="admin">  | <%= link_to "Edit", edit_artist_path(artist) %> | <%= link_to 'Delete', artist, method: :delete, data: { confirm: 'Are you sure?' } %></span></pre>
         </div>
       </li>
     <% end %>
   </ol>
+
 </div>
 
 <br>
