@@ -7,6 +7,7 @@ class Playlist < ActiveRecord::Base
   has_many :genres,  :through => :songs
   
   attr_accessible :name
+  attr_accessible :song_ids
 
   validates_uniqueness_of :name, :case_sensitive => false
   validates :name, :presence => true 
