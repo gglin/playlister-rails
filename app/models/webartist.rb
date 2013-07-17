@@ -51,6 +51,10 @@ class Webartist < ActiveRecord::Base
   end
 
   def self.top_artists_tracks(artist_name)
+    apikey    = "4cd656bf335d5baa637bc52590fcb291"
+    apisecret = "a35277ca92d08df45e65db32ae806a0a"
+    lastfm = Lastfm.new(apikey, apisecret)
+
     all_results = lastfm.artist.get_top_tracks(artist: "#{artist_name}", api_key: apikey).collect {|artist| artist["name"]}
   end
 

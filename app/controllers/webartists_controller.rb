@@ -13,6 +13,7 @@ class WebartistsController < ApplicationController
   # GET /artists/1
   # GET /artists/1.json
   def show
+    @webartist = params[:id]
 
     respond_to do |format|
       format.html # show.html.erb

@@ -1,5 +1,14 @@
-<h1><%= params[:id] %></h1>
+<h1><%= @webartist %></h1>
 
+<div  class="content-scroll">
+  <ol>
+  	<% Webartist.top_artists_tracks(@webartist).each do |websong|  %>
+        <li>
+        	<%= websong %>
+	      </li>
+    <% end %>
+  </ol>
 
+</div>
 
 <!-- .gsub(/\W\d0/, " ")   -->
