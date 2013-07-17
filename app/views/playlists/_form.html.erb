@@ -20,18 +20,35 @@
 
   <fieldset>
     <legend>Add Songs (<%= link_to 'Create New', new_song_path %>):</legend>
-    <div class="control-group content-scroll">
-      <% Song.all.sort {|i, j| if i.artist.sort_name.downcase == j.artist.sort_name.downcase; i.sort_name.downcase <=> j.sort_name.downcase; else i.artist.sort_name.downcase <=> j.artist.sort_name.downcase; end}.each do |song| %>
-        
-        <%  is_checked  =  @playlist.song_ids.include?(song.id)  ?  true  :  false %>
-        <%= check_box_tag 'playlist[song_ids][]', song.id, is_checked, {:"data-toggle" => "checkbox"} %>
-        <%= label_tag     'playlist[song][name]', song.print(nil, true, nil, false) %><br>
-
-      <% end %>
-    </div>
+    <%= f.collection_select :song_ids, Song.all(:order => "name ASC"), :id, :full_name_with_genre, {selected: @playlist.song_ids}, class: "select-block multi-select", multiple: "multiple" %>
   </fieldset>
 
+  <br><br>
+
   <div class="actions">
-    <%= f.submit "#{@action} Playlist", class: "btn btn-primary" %>
+    <%= f.submit "#{@action} Playlist", class: "btn btn-info" %>
   </div>
 <% end %>
+
+
+
+<script>
+  $('.dropdown input, .dropdown label').click(function (event) {
+    event.stopPropagation();
+  });
+</script>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    // window.prettyPrint() && prettyPrint();
+
+    $('.multi-select').multiselect({
+      includeSelectAllOption: true,
+      enableFiltering: true,
+      maxHeight: 300,
+      buttonWidth: '400px',
+      buttonClass: 'btn btn-primary'
+    });
+
+  });
+</script>

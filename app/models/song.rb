@@ -17,6 +17,18 @@ class Song < ActiveRecord::Base
   extend  Prettifiable::ClassMethods
   include Prettifiable::InstanceMethods
 
+  def full_name
+    "#{artist.name} - #{name}"
+  end
+
+  def full_name_with_genre
+    if genre
+      "#{full_name} [#{genre.name}]"
+    else
+      full_name
+    end
+  end
+
   def print(width = nil, include_artist = false, artist_width = nil, include_genre = true)
     artist_word = include_artist ? "#{spacer(self.artist.name, artist_width)} - " : ""
     genre_word  = include_genre  ? "[#{self.genre.name}]" : ""

@@ -17,6 +17,9 @@ class SongsController < ApplicationController
     @album_name = @song.album.nil?  ?  ""  : @song.album.name
     @album_link = @song.album.nil?  ?  "#" : album_path(@song.album)
 
+    @genre_name = @song.genre.nil?  ?  ""  : @song.genre.name
+    @genre_link = @song.genre.nil?  ?  "#" : genre_path(@song.genre)
+
     @video_id = @song.youtube
 
     respond_to do |format|

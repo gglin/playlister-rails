@@ -22,12 +22,15 @@
   <% songz = @artist.songs.sort_by {|i| i.name.downcase} %>
   <% songz.each_with_index do |song, index| %>
     <% album_name = song.album.nil?  ?  ""  : song.album.name  %>
+    <% genre_name = song.genre.nil?  ?  ""  : song.genre.name  %>
+
     <% album_link = song.album.nil?  ?  "#" : album_path(song.album) %>
+    <% genre_link = song.genre.nil?  ?  "#" : genre_path(song.genre) %>
     <tr class="hoverable td-link">
       <td><%= index + 1 %></td>
-      <td><%= link_to truncate(album_name, length: 30), album_link             %></td>
-      <td><%= link_to truncate(song.name, length: 40),  song                   %></td>
-      <td><%= link_to song.genre.name,           genre_path(song.genre) %></td>
+      <td><%= link_to truncate(album_name, length: 30), album_link %></td>
+      <td><%= link_to truncate(song.name, length: 40),  song       %></td>
+      <td><%= link_to truncate(genre_name, length: 15), genre_link %></td>
       
       <td> <div class="admin"> <%= link_to "Edit ", edit_song_path(song) %> </div></td>
       <td> <div class="admin"> <%= link_to "Delete", song, method: :delete, data: { confirm: 'Are you sure?' } %> </div></td>

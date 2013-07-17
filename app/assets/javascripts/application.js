@@ -14,6 +14,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
+//= require ../../../vendor/assets/javascripts/bootstrap-multiselect.js
+//= require ../../../vendor/assets/javascripts/prettify.js
 // require_tree ../../../vendor/assets/javascripts/.
 // require      ../../../vendor/assets/javascripts/flatui-checkbox.js
 

@@ -20,39 +20,65 @@
 
     <div class="control-group">
       <%= f.label  :artist %> (<%= link_to 'Create New', new_artist_path %>)
-      <%= f.collection_select :artist_id, Artist.all.sort_by {|i| i.name.downcase}, :id, :name, {include_blank: 'select an Artist', selected: @selected_artist}, class: "select-block" %>
+      <%= f.collection_select :artist_id, Artist.all.sort_by {|i| i.sort_name.downcase}, :id, :name, {include_blank: 'select an Artist', selected: @selected_artist}, class: "select-block" %>
     </div>
 
     <div class="control-group">
       <%= f.label  :album %> (<%= link_to 'Create New', new_album_path %>)
-      <%= f.collection_select :album_id, Album.all.sort_by {|i| i.name.downcase}, :id, :name, {include_blank: 'select an Album', selected: @selected_album} %>
+      <%= f.collection_select :album_id, Album.all.sort_by {|i| i.sort_name.downcase}, :id, :name, {include_blank: 'select an Album', selected: @selected_album} %>
     </div>
 
     <div class="control-group">
       <%= f.label  :genre %>  (<%= link_to 'Create New', new_genre_path %>)
-      <%= f.collection_select :genre_id,  Genre.all.sort_by {|i| i.name.downcase}, :id, :name,  {include_blank: 'select a Genre', selected: @selected_genre} %>
+      <%= f.collection_select :genre_id,  Genre.all.sort_by {|i| i.sort_name.downcase}, :id, :name,  {include_blank: 'select a Genre', selected: @selected_genre} %>
     </div>
 
   <% end %>
 
   <fieldset>
     <legend>Add to Playlists (<%= link_to 'Create New', new_playlist_path %>):</legend>
-    <div class="control-group content-scroll">
-      <% Playlist.all.sort_by {|i| i.name.downcase}.each do |playlist| %>
-        
-        <%  is_checked  =  @song.playlist_ids.include?(playlist.id)  ?  true  :  false %>
-        <%= check_box_tag 'song[playlist_ids][]', playlist.id, is_checked, {:"data-toggle" => "checkbox"} %>
-        <%= label_tag     'song[playlist][name]', playlist.name %><br>
+    <%= f.collection_select :playlist_ids, Playlist.all.sort_by {|i| i.sort_name.downcase}, :id, :name, {selected: @song.playlist_ids}, class: "select-block multi-select", multiple: "multiple" %>
 
-      <% end %>
-    </div>
+<!--  <div class="control-group content-scroll">
+      <%# Playlist.all.sort_by {|i| i.name.downcase}.each do |playlist| %>
+        
+        <%# is_checked  =  @song.playlist_ids.include?(playlist.id)  ?  true  :  false %>
+        <%# check_box_tag 'song[playlist_ids][]', playlist.id, is_checked, {:"data-toggle" => "checkbox"} %>
+        <%# label_tag     'song[playlist][name]', playlist.name %><br>
+
+      <%# end %>
+    </div> -->
   </fieldset>
 
+  <br><br>
+
   <div class="actions">
-    <%= f.submit "#{@action} Song", class: "btn btn-primary" %>
+    <%= f.submit "#{@action} Song", class: "btn btn-info" %>
     <%# %w{primary info success warning danger inverse link}.each do |i| %>
       <%# f.submit "Create New Song", class: "btn btn-#{i}" %>
     <%# end %>
   </div>
-
 <% end %>
+
+
+
+<script>
+  $('.dropdown input, .dropdown label').click(function (event) {
+    event.stopPropagation();
+  });
+</script>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    // window.prettyPrint() && prettyPrint();
+
+    $('.multi-select').multiselect({
+      includeSelectAllOption: true,
+      enableFiltering: true,
+      maxHeight: 300,
+      buttonWidth: '400px',
+      buttonClass: 'btn btn-primary'
+    });
+
+  });
+</script>
