@@ -20,7 +20,7 @@
 
   <fieldset>
     <legend>Add Songs (<%= link_to 'Create New', new_song_path %>):</legend>
-    <%= f.collection_select :song_ids, Song.all(:order => "name ASC"), :id, :full_name_with_genre, {selected: @playlist.song_ids}, class: "select-block multi-select", multiple: "multiple" %>
+    <%= f.collection_select :song_ids, Song.all.sort {|i, j| if i.artist.sort_name.downcase == j.artist.sort_name.downcase; i.sort_name.downcase <=> j.sort_name.downcase; else;    i.artist.sort_name.downcase <=> j.artist.sort_name.downcase; end;}, :id, :full_name_with_genre, {selected: @playlist.song_ids}, class: "select-block multi-select", multiple: "multiple" %>
   </fieldset>
 
   <br><br>
