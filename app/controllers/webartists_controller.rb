@@ -2,11 +2,11 @@ class WebartistsController < ApplicationController
   # GET /artists
   # GET /artists.json
   def index
-    @artists = Artist.all
+    @webartists = Webartist.all
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @artists }
+      format.json { render json: @webartists }
     end
   end
 
@@ -17,40 +17,40 @@ class WebartistsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @artist }
+      format.json { render json: @webartist }
     end
   end
 
   # GET /artists/new
   # GET /artists/new.json
   def new
-    @artist = Artist.new
+    @webartist = Webartist.new
     @action = "Add"
 
     respond_to do |format|
       format.html # new.html.erb
-      format.json { render json: @artist }
+      format.json { render json: @webartist }
     end
   end
 
   # GET /artists/1/edit
   def edit
-    @artist = Artist.find(params[:id])
+    @webartist = Webartist.find(params[:id])
     @action = "Update"
   end
 
   # POST /artists
   # POST /artists.json
   def create
-    @artist = Artist.new(params[:artist])
+    @webartist = Webartist.new(params[:artist])
 
     respond_to do |format|
-      if @artist.save
-        format.html { redirect_to @artist, notice: "Artist was successfully created." }
-        format.json { render json: @artist, status: :created, location: @artist }
+      if @webartist.save
+        format.html { redirect_to @webartist, notice: "Artist was successfully created." }
+        format.json { render json: @webartist, status: :created, location: @webartist }
       else
         format.html { render action: "new" }
-        format.json { render json: @artist.errors, status: :unprocessable_entity }
+        format.json { render json: @webartist.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -58,15 +58,15 @@ class WebartistsController < ApplicationController
   # PUT /artists/1
   # PUT /artists/1.json
   def update
-    @artist = Artist.find(params[:id])
+    @webartist = Webartist.find(params[:id])
 
     respond_to do |format|
-      if @artist.update_attributes(params[:artist])
-        format.html { redirect_to @artist, notice: "Artist was successfully updated." }
+      if @webartist.update_attributes(params[:artist])
+        format.html { redirect_to @webartist, notice: "Artist was successfully updated." }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
-        format.json { render json: @artist.errors, status: :unprocessable_entity }
+        format.json { render json: @webartist.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -74,9 +74,9 @@ class WebartistsController < ApplicationController
   # DELETE /artists/1
   # DELETE /artists/1.json
   def destroy
-    @artist = Artist.find(params[:id])
-    name = @artist.name
-    @artist.destroy
+    @webartist = Webartist.find(params[:id])
+    name = @webartist.name
+    @webartist.destroy
 
     respond_to do |format|
       format.html { redirect_to artists_url, notice: "Artist '#{name}' was successfully deleted." }

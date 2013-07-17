@@ -1,6 +1,14 @@
 <%= link_to_function "<< back", "history.back()" %>
 
+<% if !notice.nil? %>
+  <p id="notice" class="alert alert-success"><%= notice %></p>
+<% end %>
+
 <h1><%= @webartist %></h1>
+
+<div class="artist-background" style="background-image: url(<%= get_art(@webartist) %>) no-repeat 0 50%">
+<%= image_tag(@webartist.get_art) %>
+
 
 <div  class="content-scroll">
   <ol>
