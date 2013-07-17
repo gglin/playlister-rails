@@ -5,10 +5,10 @@
 <p><i>Week of <%= Date.today.at_beginning_of_week.to_formatted_s(:long_ordinal) %></i></p>
 <div  class="content-scroll">
   <ol>
-    <% Artist.top_artists.each do |artist| %>
+    <% Webartist.top_artists.each do |webartist| %>
       <li>
         <div class="hoverable">
-          <pre><%= link_to artist %></pre>
+          <pre><%= link_to webartist %></pre>
         </div>
       </li>
     <% end %>
