@@ -8,7 +8,7 @@
     <% Webartist.top_artists.each do |webartist| %>
       <li>
         <div class="hoverable">
-          <pre><%= link_to webartist %></pre>
+          <pre><%= link_to webartist, "/webartists/#{webartist}" %></pre>
         </div>
       </li>
     <% end %>
