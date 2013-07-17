@@ -8,6 +8,7 @@ PlaylisterRails::Application.routes.draw do
   get "welcome/index"
 
   resources :webartists
+  get "webartists/:id/:id" => 'websongs#show'
 
   resources :songs
 

@@ -1,14 +1,17 @@
+<%= link_to_function "<< back", "history.back()" %>
+
 <h1><%= @webartist %></h1>
 
 <div  class="content-scroll">
   <ol>
   	<% Webartist.top_artists_tracks(@webartist).each do |websong|  %>
-        <li>
-        	<%= websong %>
-	      </li>
+      <li>
+        <div class="hoverable">
+        	<pre><%= link_to websong, "/webartists/#{@webartist}/#{websong}" %><pre>
+        </div>
+      </li>
     <% end %>
   </ol>
 
 </div>
 
-<!-- .gsub(/\W\d0/, " ")   -->
