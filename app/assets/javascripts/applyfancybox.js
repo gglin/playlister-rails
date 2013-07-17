@@ -2,11 +2,11 @@ jQuery(document).ready(function() {
 
 	$(".fancybox").click(function() {
 		$.fancybox({
-			// 'padding'		: 0,
-			// 'autoScale'		: false,
+			'padding'		: 0,
+			'autoScale'		: false,
 			'transitionIn'	: 'elastic',
 			'transitionOut'	: 'none',
-			// 'title'			: this.title,
+			'title'			: this.title,
 			'width'			: 640,
 			'height'		: 385,
 			'href'			: this.href.replace(new RegExp("watch\\?v=", "i"), 'v/'),
