@@ -30,9 +30,9 @@
         <tr class="hoverable td-link">
           <td><%= index + 1 %></td>
           <td><%= link_to truncate(playlist.name, length: 30), playlist %></td>
-          <td><%= link_to playlist.songs.size,                 playlist %></td>
-          <td><%= link_to playlist.albums.size,                playlist %></td>
-          <td><%= link_to playlist.genres.size,                playlist %></td>
+          <td><%= link_to playlist.songs.uniq.size,            playlist %></td>
+          <td><%= link_to playlist.albums.uniq.size,           playlist %></td>
+          <td><%= link_to playlist.genres.uniq.size,           playlist %></td>
           
           <td> <div class="admin"> <%= link_to "Edit ", edit_playlist_path(playlist) %> </div></td>
           <td> <div class="admin"> <%= link_to "Delete", playlist, method: :delete, data: { confirm: 'Are you sure?' } %> </div></td>

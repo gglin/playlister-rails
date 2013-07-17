@@ -37,7 +37,7 @@
 
   <fieldset>
     <legend>Add to Playlists (<%= link_to 'Create New', new_playlist_path %>):</legend>
-    <%= f.collection_select :playlist_ids, Playlist.all.sort_by {|i| i.sort_name.downcase}, :id, :name, {selected: @song.playlist_ids}, class: "select-block multi-select", multiple: "multiple" %>
+    <%= f.collection_select :playlist_ids, Playlist.all.sort_by {|i| i.sort_name.downcase}, :id, :name, {selected: @selected_playlists}, class: "select-block multi-select", multiple: "multiple" %>
 
 <!--  <div class="control-group content-scroll">
       <%# Playlist.all.sort_by {|i| i.name.downcase}.each do |playlist| %>

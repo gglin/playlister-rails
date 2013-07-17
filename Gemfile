@@ -32,7 +32,7 @@ group :development do
 end
 
 gem 'flatui-rails'
-gem "select2-rails"
+# gem "select2-rails"
 
 gem 'youtube_search'
 gem 'lastfm'

@@ -37,9 +37,10 @@ class SongsController < ApplicationController
     if request.referer.is_a? String
       resource_type = request.referer.split("/")[-2]
       resource_id   = request.referer.split("/")[-1]
-      @selected_artist = resource_id.to_i  if resource_type = "artists" 
-      @selected_album  = resource_id.to_i  if resource_type = "albums"
-      @selected_genre  = resource_id.to_i  if resource_type = "genres"
+      @selected_artist    = resource_id.to_i  if resource_type = "artists" 
+      @selected_album     = resource_id.to_i  if resource_type = "albums"
+      @selected_genre     = resource_id.to_i  if resource_type = "genres"
+      @selected_playlists = resource_id.to_i  if resource_type = "playlists"
     end
 
     respond_to do |format|
@@ -53,9 +54,10 @@ class SongsController < ApplicationController
     @song = Song.find(params[:id])
     @action = "Update"
 
-    @selected_artist = @song.artist_id
-    @selected_album  = @song.album_id
-    @selected_genre  = @song.genre_id
+    @selected_artist    = @song.artist_id
+    @selected_album     = @song.album_id
+    @selected_genre     = @song.genre_id
+    @selected_playlists = @song.playlist_ids
   end
 
   # POST /songs
