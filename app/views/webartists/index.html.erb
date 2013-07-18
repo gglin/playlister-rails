@@ -1,0 +1,17 @@
+<% if !notice.nil? %>
+  <p id="notice" class="alert alert-success"><%= notice %></p>
+<% end %>
+<h1>Most Played Artists</h1>
+<p><i>Week of <%= Date.today.at_beginning_of_week.to_formatted_s(:long_ordinal) %></i></p>
+<div  class="content-scroll">
+  <ol>
+    <% Webartist.top_artists.each do |webartist| %>
+      <li>
+        <div class="hoverable">
+          <pre><%= link_to webartist, "/webartists/#{webartist}" %></pre>
+        </div>
+      </li>
+    <% end %>
+  </ol>
+
+</div>

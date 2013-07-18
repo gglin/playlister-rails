@@ -1,0 +1,23 @@
+<%= link_to_function "<< back", "history.back()" %>
+
+<% if !notice.nil? %>
+  <p id="notice" class="alert alert-success"><%= notice %></p>
+<% end %>
+
+<h1><%= @webartist %></h1>
+<br/>
+<%= image_tag(@webartiste.get_art) %>
+
+<div  class="content-scroll">
+  <ol>
+  	<% Webartist.top_artists_tracks(@webartist).each do |websong|  %>
+      <li>
+        <div class="hoverable">
+        	<pre><%= link_to websong, "/webartists/#{@webartist}/#{websong}" %><pre>
+        </div>
+      </li>
+    <% end %>
+  </ol>
+
+</div>
+

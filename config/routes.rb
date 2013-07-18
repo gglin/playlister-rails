@@ -15,6 +15,9 @@ PlaylisterRails::Application.routes.draw do
 
   resources :artists
 
+  resources :webartists
+  get "webartists/:id/:id" => 'websongs#show'
+  
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
