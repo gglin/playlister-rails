@@ -2,13 +2,30 @@
   <div class="navbar-inner">
     <div class="navbar-container">
       <h1><a href="/" class="brand"> Playlisterrr </a></h1>
+      
       <ul class="nav all-stats">
-        <li><%= link_to "Artists", artists_path %></li>
-        <li><%= link_to "Albums",  albums_path  %></li>
-        <li><%= link_to "Songs",   songs_path   %></li>
-        <li><%= link_to "Genres",  genres_path  %></li>
-        <li><%= link_to "Playlists",  playlists_path  %></li>
+
+        <li class="dropdown">
+          <a id="drop1" href="<%= songs_path %>" role="button" class="dropdown-toggle" data-toggle="dropdown">Browse by <b class="caret"></b></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
+            <li><%= link_to "Artists",   artists_path   %></li>
+            <li><%= link_to "Albums",    albums_path    %></li>
+            <li><%= link_to "Songs",     songs_path     %></li>
+            <li><%= link_to "Genres",    genres_path    %></li>
+            <li><%= link_to "Playlists", playlists_path %></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a id="drop2" href="/" role="button" class="dropdown-toggle" data-toggle="dropdown">Discover <b class="caret"></b></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
+            <li><%= link_to "Top Artists",   artists_path   %></li>
+            <li><%= link_to "Top Songs",     songs_path     %></li>
+          </ul>
+        </li>
+
       </ul>
+
        <ul class="nav all-stats pull-right">
         <%# if user_signed_in? %>
          <!--  <li><%# link_to current_user.full_name, profiles_path(current_user.profile_name) %></li>
@@ -18,7 +35,8 @@
           <li><%# link_to "Log In", login_path %></li> -->
           <li><a>Log In</a></li>
         <%# end %>
-      </ul>       
+      </ul>   
+
     </div>
   </div>
 </div>

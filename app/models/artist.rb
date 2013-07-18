@@ -44,4 +44,22 @@ class Artist < ActiveRecord::Base
     matches = all_results["artistmatches"]["artist"]
     matches.is_a?(Array)  ?  matches.first  :  matches
   end
+
+  def primary_genre
+    return nil if self.songs.empty?
+    genres_sorted.first
+  end
+
+  def primary_genre_id
+    primary_genre.nil?  ?  nil  :  primary_genre.id
+  end
+
+  def genres_sorted
+    genres_freq = Hash.new(0)
+    self.songs.each do |song|
+      genres_freq[song.genre] += 1
+    end
+    genres_freq = Hash[*genres_freq.sort_by{|k,v| v}.reverse.flatten]
+    genres_freq.keys
+  end
 end

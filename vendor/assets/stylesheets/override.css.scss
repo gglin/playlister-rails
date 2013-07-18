@@ -54,6 +54,10 @@ h1.inline, h2.inline, h3.inline, h4.inline, h5.inline {
   font-size: 12px;
 }
 
+.nav .dropdown-menu {
+  background-color: #34495e;
+}
+
 /**************/
 /* Containers */
 /**************/
@@ -218,6 +222,56 @@ table#albums_headings {
   width: 10%;
   text-align: center;
 }
+
+
+/*********************/
+/* Album Songs Table */
+/*********************/
+
+table#album_songs,
+table#album_songs_headings {
+  width: 60%;
+  td, tr {
+    border-top: 0px solid gray;
+  }
+}
+
+/* Numbering */
+#album_songs          td:nth-child(1), 
+#album_songs_headings th:nth-child(1) {
+  width: 5%;
+}
+
+/* Song */
+#album_songs          td:nth-child(2), 
+#album_songs_headings th:nth-child(2) {
+  // width: 40%;
+}
+
+/* Genre */
+#album_songs          td:nth-child(3),
+#album_songs_headings th:nth-child(3) {
+  width: 20%;
+}
+
+/* Show Edit Destroy */
+#album_songs          td:nth-child(4),
+#album_songs_headings th:nth-child(4) {
+  width: 25px;
+}
+
+/* Show Edit Destroy */
+#album_songs          td:nth-child(5),
+#album_songs_headings th:nth-child(5) {
+  width: 25px;
+}
+
+/* Show Edit Destroy */
+#album_songs          td:nth-child(6),
+#album_songs_headings th:nth-child(6) {
+  width: 25px;
+}
+
 
 /*******************/
 /* Playlists Table */

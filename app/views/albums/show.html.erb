@@ -10,25 +10,32 @@ Artist: <%= link_to @album.artist.name, artist_path(@album.artist) %><br>
 
 
 
-<table>
-<!--   <tr>
-    <th></th>
-    <th>Song</th>
-    <th>Genre</th>
-    <th></th>
-    <th></th>
-  </tr> -->
+<table id="album_songs" class="table-striped table-condensed">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Song</th>
+      <th>Genre</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
   <% songz = @album.songs.sort_by {|i| i.track} %>
   <% songz.each_with_index do |song, index| %>
     <tr class="hoverable td-link">
       <td><%= index + 1 %></td>
-      <td><%= link_to truncate(song.name, length: 40),      song %></td>
-      <td><%= link_to " [#{song.genre.name}]",  genre_path(song.genre)   %></td>
+      <td><a class='fancybox' href='http://www.youtube.com/watch?v=<%= song.youtube %>'><%= truncate(song.name, length: 40) %></a></td>
+      <td><%= link_to " #{song.genre.name}",  genre_path(song.genre)   %></td>
       
+      <td> <div class="admin"> <%= link_to "Show ", song %> </div></td>
       <td> <div class="admin"> <%= link_to "Edit ", edit_song_path(song) %> </div></td>
       <td> <div class="admin"> <%= link_to "Delete", song, method: :delete, data: { confirm: 'Are you sure?' } %> </div></td>
     </tr>
   <% end %>
+  </tbody>
 </table>
 
 <br>

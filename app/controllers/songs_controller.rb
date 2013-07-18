@@ -37,10 +37,19 @@ class SongsController < ApplicationController
     if request.referer.is_a? String
       resource_type = request.referer.split("/")[-2]
       resource_id   = request.referer.split("/")[-1]
-      @selected_artist    = resource_id.to_i  if resource_type = "artists" 
-      @selected_album     = resource_id.to_i  if resource_type = "albums"
-      @selected_genre     = resource_id.to_i  if resource_type = "genres"
-      @selected_playlists = resource_id.to_i  if resource_type = "playlists"
+      if    resource_type == "artists" 
+        @selected_artist    = resource_id.to_i
+        @selected_album     = Artist.find(@selected_artist).album_ids.first
+        @selected_genre     = Artist.find(@selected_artist).primary_genre_id
+      elsif resource_type == "albums"
+        @selected_album     = resource_id.to_i
+        @selected_artist    = Album.find(@selected_album).artist_id
+        @selected_genre     = Album.find(@selected_album).primary_genre_id
+      elsif resource_type == "genres"
+        @selected_genre     = resource_id.to_i
+      elsif resource_type == "playlists"
+        @selected_playlists = resource_id.to_i
+      end
     end
 
     respond_to do |format|

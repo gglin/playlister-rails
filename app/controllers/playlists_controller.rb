@@ -26,6 +26,13 @@ class PlaylistsController < ApplicationController
   def new
     @playlist = Playlist.new
     @action = "Add"
+    if request.referer.is_a? String
+      resource_type = request.referer.split("/")[-2]
+      resource_id   = request.referer.split("/")[-1]
+      if    resource_type == "songs" 
+        @selected_song_ids = [resource_id.to_i]
+      end
+    end
 
     respond_to do |format|
       format.html # new.html.erb
@@ -37,6 +44,7 @@ class PlaylistsController < ApplicationController
   def edit
     @playlist = Playlist.find(params[:id])
     @action = "Update"
+    @selected_song_ids = @playlist.song_ids
   end
 
   # POST /playlists

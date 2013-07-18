@@ -24,7 +24,7 @@
 
     <table id="songs" class="table table-striped table-condensed">
       <tbody>
-      <% songz = @songs.sort_by {|i| i.sort_name.downcase} %>
+      <% songz = @songs.sort {|i, j| if i.artist.sort_name.downcase == j.artist.sort_name.downcase; i.sort_name.downcase <=> j.sort_name.downcase; else; i.artist.sort_name.downcase <=> j.artist.sort_name.downcase; end;} %>
       <% songz.each_with_index do |song, index| %>
 
         <% album_name = song.album.nil?  ?  ""  : song.album.name  %>

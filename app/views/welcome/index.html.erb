@@ -4,25 +4,22 @@
   <h1>Welcome!</h1>
 
   <br>
-  <h3>Browse by:</h3>
+  <h3>Browse Library by:</h3>
     <p>
-    <li><%= link_to 'Artist', artists_path %></li>
-    <li><%= link_to 'Album',  albums_path  %></li>
-    <li><%= link_to 'Song',   songs_path   %></li>
-    <li><%= link_to 'Genre',  genres_path  %></li>
+    <li><%= link_to 'Artist',   artists_path   %> <!-- <h5 class="inline">( <%# link_to 'Add New', new_artist_path %> )</h5> --></li> 
+    <li><%= link_to 'Album',    albums_path    %> <!-- <h5 class="inline">( <%# link_to 'Add New', new_album_path %> ) </h5> --></li> 
+    <li><%= link_to 'Song',     songs_path     %> <!-- <h5 class="inline">( <%# link_to 'Add New', new_song_path %> )  </h5> --></li> 
+    <li><%= link_to 'Genre',    genres_path    %> <!-- <h5 class="inline">( <%# link_to 'Add New', new_genre_path %> ) </h5> --></li> 
+    <li><%= link_to 'Playlist', playlists_path %> <!-- <h5 class="inline">( <%# link_to 'Add New', new_genre_path %> ) </h5> --></li>
     </p>
   <br>
 
-  
-    <%= link_to 'Add New Song',    new_song_path %>
-    <br>
-    <%= link_to 'Add New Artist',  new_artist_path %>
-    <br>
-    <%= link_to 'Add New Album',   new_album_path %>
-    <br>
-    <%= link_to 'Add New Genre',   new_genre_path %>
-    <br>
-    <%= link_to 'Add New Playlist',new_playlist_path %>
+  <h3>Discover:</h3>
+    <p>
+    <li><%= link_to 'Top Artists',   artists_path    %></li>
+    <li><%= link_to 'Top Songs',     albums_path     %></li>
+    </p>
+  <br>
   
 </div>
 

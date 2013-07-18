@@ -25,12 +25,16 @@ class Album < ActiveRecord::Base
     "#{spacer("Artist", max_artist)}  #{spacer("Album", max_album)}"
   end
 
-  def primary_genre()
+  def primary_genre
     return nil if self.songs.empty?
     genres_sorted.first
   end
 
-  def genres_sorted()
+  def primary_genre_id
+    primary_genre.nil?  ?  nil  :  primary_genre.id
+  end
+
+  def genres_sorted
     genres_freq = Hash.new(0)
     self.songs.each do |song|
       genres_freq[song.genre] += 1
@@ -39,7 +43,7 @@ class Album < ActiveRecord::Base
     genres_freq.keys
   end
 
-  def assign_genre_to_all_songs()
+  def assign_genre_to_all_songs
     
   end
 end

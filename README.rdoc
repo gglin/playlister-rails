@@ -4,8 +4,20 @@ known bugs:
 - selecting all (songs or playlists) in multi select breaks unless you uncheck and check one of the options
 - popover starts working funny after a few popovers on same page
 - empty resource gives error?
+- playlist show view calls youtube API for every single song - very slow for large playlists
 
-features to add:  
+
+features to add: 
+- discover music features
+- auto complete album and genre
 - add to playlist from song index - query strings as URLs
-- click forward/backward for different youtube embeds in fancybox
+- click forward/backward for different youtube embeds in fancybox 
+  - each song in show playlist view
+  - each result in show song view
+- youtube embed always picks first result - maybe could be smarter?
+- search in navbar (top right)
+- user login
+- social media links
+- powered by Last.fm & other music APIs
+
 - dropdown menus for browse by and discover new
