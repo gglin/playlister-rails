@@ -26,12 +26,14 @@
       <tbody>
       <% albumz = @albums.sort_by {|i| i.sort_name.downcase} %>
       <% albumz.each_with_index do |album, index| %>
-        <% genre = album.primary_genre || "" %>
+        <% genre      = album.primary_genre      || Genre.first %>
+        <% genre_name = "" %>
+        <% genre_name = album.primary_genre.name unless album.primary_genre.nil? %>
         <tr class="hoverable td-link">
           <td><%= index + 1 %></td>
           <td><%= link_to truncate(album.artist.name, length: 30), artist_path(album.artist) %></td>
           <td><%= link_to truncate(album.name, length: 40),        album                     %></td>
-          <td><%= link_to truncate(genre.name, length: 12),        genre_path(genre)         %></td>
+          <td><%= link_to truncate(genre_name, length: 12),        genre_path(genre)         %></td>
           <td><%= link_to album.songs.size,                        album                     %></td>
           
           <td> <div class="admin"> <%= link_to "Edit ", edit_album_path(album) %> </div></td>
