@@ -31,7 +31,7 @@ group :development do
   gem 'awesome_print', :require => 'ap'
 end
 
-gem 'flatui-rails'
+# gem 'flatui-rails'
 # gem "select2-rails"
 
 gem 'youtube_search'

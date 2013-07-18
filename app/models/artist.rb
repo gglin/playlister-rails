@@ -29,8 +29,8 @@ class Artist < ActiveRecord::Base
   def assign_genre_to_all_songs()
   end
 
-  def get_art()
-    artist_info["image"][-1]["content"]
+  def get_art(size_index = -1)
+    artist_info.nil?  ?  nil  :  artist_info["image"][size_index]["content"]
   end
 
   def artist_info
@@ -38,7 +38,10 @@ class Artist < ActiveRecord::Base
     apisecret = "a35277ca92d08df45e65db32ae806a0a"
     lastfm = Lastfm.new(apikey, apisecret)
     
-    all_results = lastfm.artist.search(artist: name, api_key: apikey)["results"]["artistmatches"]["artist"]
-    all_results.is_a?(Array)  ?  all_results.first  :  all_results
+    all_results = lastfm.artist.search(artist: name, api_key: apikey)["results"]
+    return nil if all_results["totalResults"] == "0"
+
+    matches = all_results["artistmatches"]["artist"]
+    matches.is_a?(Array)  ?  matches.first  :  matches
   end
 end
