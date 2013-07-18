@@ -32,8 +32,8 @@
 //= require ../../../vendor/assets/javascripts/bootstrap-multiselect
 //= require ../../../vendor/assets/javascripts/prettify
 //
-// require_tree ../../../vendor/assets/javascripts/.
-// require      ../../../vendor/assets/javascripts/flatui-checkbox
+//= require ../../../vendor/assets/javascripts/jquery.fancybox.pack
+//= require ../../../vendor/assets/javascripts/applyfancybox
 
 
 $(document).ready(function() {
@@ -43,7 +43,7 @@ $(document).ready(function() {
     var hideAllPopovers = function() {
        $('.has_popover').each(function() {
             $(this).popover('hide');
-        });  
+        });
     };
 
     $('.has_popover').popover({

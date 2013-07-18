@@ -11,12 +11,11 @@
  *= require_self
  
  *= require_tree .
- * require_tree ../../../vendor/assets/stylesheets/.
  *= require bootstrap
  *= require flat-ui
  *= require font-awesome
+ *= require jquery.fancybox
  *= require override
  */
 
-// @import "bootstrap";
 
