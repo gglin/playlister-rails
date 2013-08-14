@@ -1,3 +1,9 @@
+@media (max-width: 800px) {
+  .hideable-nav {
+    display: none;
+  }
+}
+
 html body {
   background: white url(/assets/coolmusic.jpg) no-repeat center center fixed;
   -webkit-background-size: cover;
