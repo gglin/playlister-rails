@@ -21,3 +21,14 @@ features to add:
 - powered by Last.fm & other music APIs
 
 - dropdown menus for browse by and discover new
+
+
+rake db:migrate 
+
+app/models/song.rb => line 10 attr_protected
+
+rake db:seed
+
+app/models/song.rb => line 10 attr_accessible
+
+rails s
