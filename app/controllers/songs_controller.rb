@@ -49,6 +49,11 @@ class SongsController < ApplicationController
         @selected_genre     = resource_id.to_i
       elsif resource_type == "playlists"
         @selected_playlists = resource_id.to_i
+      elsif request.referer.split("/").include?("webartists")
+        @song_name          = resource_id.gsub("%20", " ")
+        if found_artist = Artist.where("LOWER(name) = ?", resource_type.gsub("%20", " ").downcase).first
+          @selected_artist = found_artist.id
+        end
       end
     end
 

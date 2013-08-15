@@ -6,3 +6,10 @@
 <br/>
 
 <a class='fancybox' href='http://www.youtube.com/watch?v=<%= @video_id %>'><img src='http://img.youtube.com/vi/<%= @video_id %>/0.jpg' width='300' height='300' ></a>
+
+<br>
+<br>
+
+<%= link_to "<span class='fui-plus-16'></span> Add Song to Library".html_safe, new_song_path, class: "btn btn-small btn-info" %>
+
+<%= link_to "<span class='fui-plus-16'></span> Add Artist to Library".html_safe, new_artist_path, class: "btn btn-small btn-success" %>

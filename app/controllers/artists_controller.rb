@@ -27,6 +27,13 @@ class ArtistsController < ApplicationController
     @artist = Artist.new
     @action = "Add"
 
+    if request.referer.split("/")[-3] == "webartists"
+      @artist_name = request.referer.split("/")[-2].gsub("%20", " ")
+      @song_name   = request.referer.split("/")[-1].gsub("%20", " ")
+    elsif request.referer.split("/")[-2] == "webartists"
+      @artist_name = request.referer.split("/")[-1].gsub("%20", " ")
+    end
+
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @artist }

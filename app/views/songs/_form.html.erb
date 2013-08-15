@@ -15,12 +15,14 @@
 
     <div class="control-group">
       <%= f.label :name, "Song Name" %>
-      <%= f.text_field :name, class: "input-xlarge" %>
+      <%= f.text_field :name, value: @song_name, class: "input-xlarge" %>
     </div>
 
     <div class="control-group">
+      <% selected_artist = @selected_artist %>
+
       <%= f.label  :artist %> (<%= link_to 'Create New', new_artist_path %>)
-      <%= f.collection_select :artist_id, Artist.all.sort_by {|i| i.sort_name.downcase}, :id, :name, {include_blank: 'select an Artist', selected: @selected_artist}, class: "select-block" %>
+      <%= f.collection_select :artist_id, Artist.all.sort_by {|i| i.sort_name.downcase}, :id, :name, {include_blank: 'select an Artist', selected: selected_artist}, class: "select-block" %>
     </div>
 
     <div class="control-group">

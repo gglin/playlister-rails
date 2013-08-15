@@ -4,7 +4,17 @@
   <p id="notice" class="alert alert-success"><%= notice %></p>
 <% end %>
 
-<h1><%= @webartist %></h1>
+<br>
+
+<div class="hoverable">
+
+  <h1 class="inline"><%= @webartist %></h1> &nbsp;&nbsp;
+  <span class="admin reset-font">
+    <%= link_to "<span class='fui-plus-16'></span> Add Artist to Library".html_safe, new_artist_path, class: "btn btn-small btn-success" %>
+  </span>
+
+</div>
+
 <br/>
 <%= image_tag(@webartiste.get_art) %>
 
@@ -13,7 +23,7 @@
   	<% Webartist.top_artists_tracks(@webartist).each do |websong|  %>
       <li>
         <div class="hoverable">
-        	<pre><%= link_to websong, "/webartists/#{@webartist}/#{websong}" %><pre>
+        	<pre><%= link_to websong, "/webartists/#{@webartist}/#{websong}" %></pre>
         </div>
       </li>
     <% end %>
