@@ -14,7 +14,7 @@
   <%= field_set_tag "" do %>
     <div class="control-group">
       <%= f.label :name %><br />
-      <%= f.text_field :name, value: @artist_name, class: "input-xlarge" %>
+      <%= f.text_field :name, value: @artist_name || @artist.name, class: "input-xlarge" %>
     </div>
   <% end %>
 
