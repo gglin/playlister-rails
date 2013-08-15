@@ -23,8 +23,9 @@
 </br>
 
 
-<div class="artist-background" style="background-image: url(<%= @artist.get_art %>) no-repeat 0 50%">
-<%= image_tag(@artist.get_art(-2)) if @artist.get_art %>
+<div class="pull-right">
+  <%= image_tag(@artist.get_art(-2)) if @artist.get_art %>
+</div>
 
 <table>
   <tr>
