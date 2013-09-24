@@ -44,6 +44,14 @@ class Album < ActiveRecord::Base
   end
 
   def assign_genre_to_all_songs
-    
+  end
+
+  def update_async
+    songs.each do |song|
+      unless song.youtube_url
+        YoutubeWorker.perform_async(song.id)
+      end
+    end
+    # puts @youtube_ids
   end
 end

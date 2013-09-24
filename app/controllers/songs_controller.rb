@@ -37,7 +37,7 @@ class SongsController < ApplicationController
     if request.referer.is_a? String
       resource_type = request.referer.split("/")[-2]
       resource_id   = request.referer.split("/")[-1]
-      if    resource_type == "artists" 
+      if    resource_type == "artists"
         @selected_artist    = resource_id.to_i
         @selected_album     = Artist.find(@selected_artist).album_ids.first
         @selected_genre     = Artist.find(@selected_artist).primary_genre_id

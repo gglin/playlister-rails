@@ -54,6 +54,7 @@ class AlbumsController < ApplicationController
 
     respond_to do |format|
       if @album.save
+        @album.update_async
         format.html { redirect_to @album, notice: 'Album was successfully created.' }
         format.json { render json: @album, status: :created, location: @album }
       else
@@ -70,6 +71,7 @@ class AlbumsController < ApplicationController
 
     respond_to do |format|
       if @album.update_attributes(params[:album])
+        @album.update_async
         format.html { redirect_to @album, notice: 'Album was successfully updated.' }
         format.json { head :no_content }
       else

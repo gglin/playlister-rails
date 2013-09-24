@@ -34,7 +34,7 @@ class Webartist
     apikey    = "4cd656bf335d5baa637bc52590fcb291"
     apisecret = "a35277ca92d08df45e65db32ae806a0a"
     lastfm = Lastfm.new(apikey, apisecret)
-    
+
     all_results = lastfm.artist.search(artist: name, api_key: apikey)["results"]["artistmatches"]["artist"]
     all_results.is_a?(Array)  ?  all_results.first  :  all_results
   end
@@ -44,7 +44,7 @@ class Webartist
     apikey    = "4cd656bf335d5baa637bc52590fcb291"
     apisecret = "a35277ca92d08df45e65db32ae806a0a"
     lastfm = Lastfm.new(apikey, apisecret)
-    
+
     all_results = lastfm.chart.get_top_artists(limit: 100).collect {|artist| artist["name"]}
   end
 
