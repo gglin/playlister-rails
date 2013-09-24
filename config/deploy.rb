@@ -1,4 +1,5 @@
 require 'bundler/capistrano' # for bundler support
+require 'sidekiq/capistrano'
 
 set :application, "playlister-rails"
 set :repository,  "git@github.com:gglin/playlister-rails.git"
