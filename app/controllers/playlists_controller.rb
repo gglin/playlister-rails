@@ -70,6 +70,11 @@ class PlaylistsController < ApplicationController
 
     respond_to do |format|
       if @playlist.update_attributes(params[:playlist])
+        @playlist.songs.each do |song|
+          unless song.youtube_url
+            YoutubeWorker.perform_async(@song.id)
+          end
+        end
         format.html { redirect_to @playlist, notice: 'Playlist was successfully updated.' }
         format.json { head :no_content }
       else

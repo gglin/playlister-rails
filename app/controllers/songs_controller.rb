@@ -78,10 +78,10 @@ class SongsController < ApplicationController
   # POST /songs.json
   def create
     @song = Song.new(params[:song])
-    YoutubeWorker.perform_async(@song)
 
     respond_to do |format|
       if @song.save
+        YoutubeWorker.perform_async(@song.id)
         format.html { redirect_to @song, notice: 'Song was successfully created.' }
         format.json { render json: @song, status: :created, location: @song }
       else
@@ -95,10 +95,10 @@ class SongsController < ApplicationController
   # PUT /songs/1.json
   def update
     @song = Song.find(params[:id])
-    YoutubeWorker.perform_async(@song)
 
     respond_to do |format|
       if @song.update_attributes(params[:song])
+        YoutubeWorker.perform_async(@song.id)
         format.html { redirect_to @song, notice: 'Song was successfully updated.' }
         format.json { head :no_content }
       else

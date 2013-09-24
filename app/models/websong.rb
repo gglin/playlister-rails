@@ -12,8 +12,6 @@ class Websong
 
   def self.youtube(artist_name, song_name)
     id = YoutubeSearch.search("#{artist_name} #{song_name}").first["video_id"]
-    # url = "http://www.youtube.com/watch?v=#{id}"
-    # ::OEmbed::Providers::Youtube.get(url).html
   end
 
 end

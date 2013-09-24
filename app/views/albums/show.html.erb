@@ -27,7 +27,7 @@ Artist: <%= link_to @album.artist.name, artist_path(@album.artist) %><br>
   <% songz.each_with_index do |song, index| %>
     <tr class="hoverable td-link">
       <td><%= index + 1 %></td>
-      <td><a class='fancybox' href='http://www.youtube.com/watch?v=<%= song.youtube %>'><%= truncate(song.name, length: 40) %></a></td>
+      <td><a class='fancybox' href='http://www.youtube.com/watch?v=<%= song.youtube_url %>'><%= truncate(song.name, length: 40) %></a></td>
       <td><%= link_to " #{song.genre.name}",  genre_path(song.genre)   %></td>
       
       <td> <div class="admin"> <%= link_to "Show ", song %> </div></td>

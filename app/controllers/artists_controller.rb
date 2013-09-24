@@ -53,6 +53,7 @@ class ArtistsController < ApplicationController
 
     respond_to do |format|
       if @artist.save
+        LastfmArtistWorker.perform_async(@artist.id)
         format.html { redirect_to @artist, notice: "Artist was successfully created." }
         format.json { render json: @artist, status: :created, location: @artist }
       else
@@ -69,6 +70,7 @@ class ArtistsController < ApplicationController
 
     respond_to do |format|
       if @artist.update_attributes(params[:artist])
+        LastfmArtistWorker.perform_async(@artist.id)
         format.html { redirect_to @artist, notice: "Artist was successfully updated." }
         format.json { head :no_content }
       else

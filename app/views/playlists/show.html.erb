@@ -56,7 +56,7 @@
           <td><%= link_to truncate(album_name, length: 30),       album_link               %></td>
           <td>
             <span href="#" class="has_popover" data-toggle="popover", title="<a href='<%= song_path(song) %>'><%= song.name %></a>" data-content="<a href='<%= song_path(song) %>'>Show Song</a> | <a href='<%= edit_song_path(song) %>'>Edit</a>">
-              <a class='fancybox' href='http://www.youtube.com/watch?v=<%= song.youtube %>'><%= truncate(song.name, length: 40) %></a>
+              <a class='fancybox' href='http://www.youtube.com/watch?v=<%= song.youtube_url %>'><%= truncate(song.name, length: 40) %></a>
             </span>
           </td>
           <td><%= link_to truncate(genre_name, length: 20),       genre_link               %></td>
