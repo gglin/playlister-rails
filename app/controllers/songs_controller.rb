@@ -20,7 +20,7 @@ class SongsController < ApplicationController
     @genre_name = @song.genre.nil?  ?  ""  : @song.genre.name
     @genre_link = @song.genre.nil?  ?  "#" : genre_path(@song.genre)
 
-    @video_id = @song.youtube
+    @video_id = @song.youtube_url
 
     respond_to do |format|
       format.html # show.html.erb
@@ -78,6 +78,7 @@ class SongsController < ApplicationController
   # POST /songs.json
   def create
     @song = Song.new(params[:song])
+    YoutubeWorker.perform_async(@song)
 
     respond_to do |format|
       if @song.save
@@ -94,6 +95,7 @@ class SongsController < ApplicationController
   # PUT /songs/1.json
   def update
     @song = Song.find(params[:id])
+    YoutubeWorker.perform_async(@song)
 
     respond_to do |format|
       if @song.update_attributes(params[:song])

@@ -9,7 +9,7 @@ class Song < ActiveRecord::Base
   attr_accessible :name, :track
   attr_accessible :artist_id, :genre_id, :album_id, :playlist_ids
 
-  validates :name, :artist_id, :presence => true 
+  validates :name, :artist_id, :presence => true
 
   extend  Sluggable::ClassMethods
   include Sluggable::InstanceMethods
@@ -37,7 +37,5 @@ class Song < ActiveRecord::Base
 
   def youtube
     id = YoutubeSearch.search("#{self.artist.name} #{self.name}").first["video_id"]
-    # url = "http://www.youtube.com/watch?v=#{id}"
-    # ::OEmbed::Providers::Youtube.get(url).html
   end
 end
